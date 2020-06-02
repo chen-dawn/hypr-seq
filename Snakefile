@@ -25,16 +25,10 @@ SequenceFormatter.format_field = new_format_field
 mip_directory = '/seq/lincRNA/Projects/MIP/mip-pipeline/bin'
 
 def parse_sample_sheet(path_to_sample_sheet):
-    # add in columns for P16 and downsampling, if they aren't there already
+    # add in column for downsampling, if necessary
     sample_sheet = pd.read_table(path_to_sample_sheet)
-    if 'P16' not in sample_sheet.columns:
-        sample_sheet['P16'] = False
     if 'ReadsToUse' not in sample_sheet.columns:
         sample_sheet['ReadsToUse'] = False
-    if 'Crop' not in sample_sheet.columns:
-        sample_sheet['Crop'] = False
-    if 'CropDict' not in sample_sheet.columns:
-        sample_sheet['CropDict'] = np.nan
     return sample_sheet
 
 # getting arguments passed into config
@@ -45,17 +39,7 @@ hamming = config['hamming']
 readlen = config['readlen']
 cbc_len = config['cbc']
 cbc = ''.join(['C' for _ in range(cbc_len)])
-# umi_thresh = config['umi_thresh']
-# overlap_thresh = config['overlap_thresh']
 thresh = config.get('thresh', 0.005) # 0.005 what about 0.01?
-
-# crop dictionary specific values (defaults encoded here and not in the script)
-crop_dict_min_reads = config.get('crop_minreads', 20)
-crop_dict_chastity = config.get('crop_chastity', 5)
-crop_dict_fraction = config.get('crop_fraction', 0.6)
-
-# setting a default crop dictionary to ensure backwards compatibility, shouldn't have to use this ideally
-default_crop_dictionary = '/seq/lincRNA/Ben/MIPs/191213_bowtie_indel_test/191218_dictionary_bowtie2_v1.txt'
 
 # get the sample sheet to determine what we actually need to run on
 sample_sheet = parse_sample_sheet(config['sample_sheet'])
@@ -76,13 +60,9 @@ def collate_helper(wildcards):
         targets.append('bulk_count_summary.txt')
     if n_bulk_samples < len(sample_sheet):
         targets.append('emul_count_summary.txt')
-        if sample_sheet.P16.any():
-            targets.append('emul_p16_summary.txt')
-        if sample_sheet.Crop.any():
-            targets.append('emul_crop_summary.txt')
     return targets
 
-# collate the information from the different summaries (bulk, emulsion, p16) into one document
+# collate the information from the different summaries into one document
 rule collate:
     input:
         collate_helper
@@ -123,26 +103,6 @@ rule emul_summary:
         "python {params.emul_summarize} --output_stats {output.stats_summary} --input_stats {input.stats} \
             --output_counts {output.counts_summary} --input_counts {input.counts}"
 
-rule p16_summary:
-    input:
-        ["{name}-{id}/p16/{name}-{id}_p16.stats.txt".format(name=row.Name, id=row.ID) for row in sample_sheet.loc[sample_sheet.P16].itertuples()]
-    output:
-        'emul_p16_summary.txt'
-    params:
-        p16_summarize=path.join(mip_directory, 'p16_summarize.py')
-    shell:
-        "python {params.p16_summarize} -o {output} -i {input}"
-
-rule crop_summary:
-    input:
-        ["{name}-{id}/crop/{name}-{id}_crop.stats.txt".format(name=row.Name, id=row.ID) for row in sample_sheet.loc[sample_sheet.Crop].itertuples()]
-    output:
-        'emul_crop_summary.txt'
-    params:
-        p16_summarize=path.join(mip_directory, 'p16_summarize.py')
-    shell:
-        "python {params.p16_summarize} -o {output} -i {input} -t _crop"
-
 # bulk specific analysis
 rule bulk_output_plots:
     input:
@@ -166,50 +126,6 @@ rule parse_bulk_count:
         probes="{sample}/{sample}_bulk.probe_counts.txt"
     shell:
         "{mip_directory}/parse_count.py -r {input.raw} -c {output.counts} -p {output.probes} -o {output.plot}"
-
-# p16/crop specific analyses
-rule analyze_p16:  
-    input:
-        collapsed_counts='{sample}/{sample}_collapsed_emul.count_matrix.txt',
-        uncollapsed_counts='{sample}/{sample}_uncollapsed_emul.count_matrix.txt',
-        barcode_stats='{sample}/tmp/{sample}.collapse_bc_stats.txt'
-        # multiplets='{sample}/tmp/{sample}.collapse_multiplet_bcs.txt',
-        # singletons='{sample}/tmp/{sample}.collapse_singleton_bcs.txt'
-    output:
-        stats="{sample}/p16/{sample}_p16.stats.txt",
-        barcodes="{sample}/p16/{sample}_p16.barcode_assignments.txt",
-        plots="{sample}/p16/{sample}_p16.plots.pdf",
-        log="{sample}/log/{sample}_p16.log.txt",
-        guides_kd="{sample}/p16/{sample}_p16.guide_stats.txt",
-        elements_kd="{sample}/p16/{sample}_p16.element_stats.txt"
-    params:
-        analyze_p16=path.join(mip_directory, 'analyze_p16.py')
-    shell:
-        "python {params.analyze_p16} -c {input.collapsed_counts} -d {input.uncollapsed_counts} -r {input.barcode_stats} \
-            -p {output.plots} -l {output.log} -s {output.stats} -b {output.barcodes} -k {output.guides_kd} -v {output.elements_kd}"
-
-rule analyze_crop:  
-    input:
-        # collapsed_counts='{sample}/{sample}_collapsed_emul_flat.counts.txt',
-        # uncollapsed_counts='{sample}/{sample}_uncollapsed_emul_flat.counts.txt',
-        probe_counts_filtered="{sample}/{sample}_collapsed_emul.count_matrix_probes.txt",
-        barcode_stats='{sample}/tmp/{sample}.collapse_bc_stats.txt'
-    output:
-        stats="{sample}/crop/{sample}_crop.stats.txt",
-        barcodes="{sample}/crop/{sample}_crop.barcode_assignments.txt",
-        plots="{sample}/crop/{sample}_crop.plots.pdf",
-        log="{sample}/log/{sample}_crop.log.txt"
-    params:
-        analyze_crop=path.join(mip_directory, 'analyze_crop_experiment.py'),
-        min_reads=crop_dict_min_reads,
-        chastity=crop_dict_chastity,
-        fraction=crop_dict_fraction,
-        dictionary=lambda wildcards: sample_sheet.loc[sample_sheet.ID == sample_name_to_id(wildcards.sample), 'CropDict'].values[0] if not sample_sheet.loc[sample_sheet.ID == sample_name_to_id(wildcards.sample), 'CropDict'].isna().any() else default_crop_dictionary
-    shell:
-        "python {params.analyze_crop} --filtered_probes {input.probe_counts_filtered} --barcode_stats {input.barcode_stats} \
-            --plots {output.plots} --log {output.log} --stats {output.stats} --barcode_assignments {output.barcodes} \
-            --read_threshold {params.min_reads} --chastity {params.chastity} --fraction_threshold {params.fraction} \
-            --bc_to_guide {params.dictionary}"
 
 # emul specific analyses (glue vertically, as in combine stats from a bunch of separate places into one)
 rule combine_emul_stats:
@@ -439,12 +355,6 @@ rule trim_read:
 
 # extraction rules (experiment-type specific)
 
-# # find fastqs
-# def bulk_extract_helper(wildcards):
-#     sample = wildcards.sample
-#     r1 = sample_sheet.loc[sample_sheet.ID == sample_name_to_id(sample), 'Read1'].values[0]
-#     return r1
-
 rule get_bulk_extracted_reads:
     input:
         "{sample}/tmp/{sample}_R1_001.bulk_extracted.fastq.gz"
@@ -565,12 +475,6 @@ rule get_downsampled_reads:
         "{sample}/stats/{sample}_downsampled.stats.txt"
     shell:
         "zcat {input} | echo -e \"InputReads\t$((`wc -l`/4))\" > {output}"
-
-# def emul_downsample_helper(wildcards):
-#     sample = wildcards.sample
-#     r1 = sample_sheet.loc[sample_sheet.ID == sample_name_to_id(sample), 'Read1'].values[0]
-#     r2 = sample_sheet.loc[sample_sheet.ID == sample_name_to_id(sample), 'Read2'].values[0]
-#     return {'r1': r1, 'r2': r2}
 
 def downsample_helper(wildcards):
     sample, read = wildcards.sample, wildcards.read

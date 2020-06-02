@@ -1,0 +1,161 @@
+import pandas as pd
+import os
+
+# monkey patch the snakemake SequenceFormatter for naming submitted jobs
+from snakemake.utils import SequenceFormatter
+from snakemake.io import Wildcards
+
+original_formatter = SequenceFormatter.format_field
+
+def new_format_field(self, value, format_spec):
+    if isinstance(value, Wildcards):
+        return ".".join("{}={}".format(name, value) # simply change the ',' to '.'
+                        for name, value in
+                        sorted(value.items(), key=lambda item: item[0]))
+    if isinstance(value, (list, tuple, set, frozenset)):
+        return self.separator.join(self.format_element(v, format_spec)
+                                   for v in value)
+    else:
+        return self.format_element(value, format_spec)
+
+SequenceFormatter.format_field = new_format_field
+
+# defining global variables
+code_directory = '/seq/lincRNA/Projects/MIP/mip-pipeline/probe_design'
+# gtf = '/seq/lincRNA/data/hg19/RefSeqCurated.170308.gtf'
+# genome_fasta = '/seq/lincRNA/data/hg19/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa'
+
+gtf = config['gtf']
+genome_fasta = config['genome_fasta']
+introns = config['introns']
+blastdb = config['blastdb']
+probes_per_gene = config.get('probes_per_gene', None)
+
+def load_input_table(path_to_table):
+    try:
+        return pd.read_excel(path_to_table, names=[0,1])
+    except:
+        return pd.read_table(path_to_table, names=[0,1])
+
+gene_table = load_input_table(config['input_table'])
+
+symbol_to_gene = {}
+
+for r in range(len(gene_table)):
+    symbol_to_gene[gene_table.loc[r, 1]] = gene_table.loc[r, 0]
+
+rule all:
+    input:
+        "probes_for_idt.txt"
+
+# convert ugly output table into IDT readable format
+rule format_for_idt:
+    input:
+        "probes.csv"
+    output:
+        idt="probes_for_idt.txt",
+        stats="probe_stats.txt"
+    params:
+        format_for_idt=os.path.join(code_directory, 'format_for_idt.py')
+    shell:
+        "python {params.format_for_idt} {input} {output.idt} {output.stats}"
+
+def get_input_for_probe_design(wildcards):
+    if introns:
+        return {'introns': ['HomologyRegionsHCR/{}-intron.fa'.format(symbol) for symbol in gene_table[1].unique()],
+                'exons': ['HomologyRegionsHCR/{}-exon.fa'.format(symbol) for symbol in gene_table[1].unique()]}
+    else:
+        return {'exons': ['HomologyRegionsHCR/{}-exon.fa'.format(symbol) for symbol in gene_table[1].unique()]}
+
+# design probes (i.e. add handles) to everything in each of the fastq files in a particular directory
+rule design_probes:
+    input:
+        # grab everything from input table
+        unpack(get_input_for_probe_design)
+        # introns=['HomologyRegionsHCR/{}-intron.fa'.format(symbol) for symbol in gene_table[1].unique()],
+        # exons=['HomologyRegionsHCR/{}-exon.fa'.format(symbol) for symbol in gene_table[1].unique()]
+    output:
+        "probes.csv"
+    params:
+        probes_per_gene_file=lambda wildcards: "probes_per_gene_file='{}';".format(probes_per_gene) if probes_per_gene else "probes_per_gene_file=false;"
+    shell:
+        "matlab -nodesktop -nosplash -r \"clear all; addpath('{}'); directory='{}'; {} HCRProbeGeneration; quit;\"".format(code_directory, '.', '{params.probes_per_gene_file}')
+
+rule choose_homology_regions:
+    input:
+        "fastas/{symbol}-{exon}.fa"
+    output:
+        "HomologyRegionsHCR/{symbol}-{exon}.fa"
+    params:
+        ref_seq=lambda wildcards: wildcards.symbol,
+        genename=lambda wildcards: symbol_to_gene[wildcards.symbol],
+        intron=lambda wildcards: wildcards.exon,
+        blastdb=blastdb
+    shell:
+        "matlab -nodesktop -nosplash -r \"clear all; addpath('{}'); fasta_name='{}'; ref_seq='{}'; genename='{}'; intron='{}'; outfasta='{}'; blastdb='{}'; GetHCRHomologyRegions; quit;\"".format(code_directory, '{input}', '{params.ref_seq}', '{params.genename}', '{params.intron}', '{output}', '{params.blastdb}')
+
+# gets the coords of the coding sequence, then runs a special python script to convert this to an intron bed, then gets the fastas
+rule get_intron_fasta:
+    input:
+        gtf=gtf,
+        fasta=genome_fasta    
+    output:
+        "fastas/{symbol}-intron.fa"
+    params:
+        symbol=lambda wildcards: wildcards.symbol,
+        convert=os.path.join(code_directory, 'convert_exon_to_intron_bed.py')
+    shell:
+        '''
+        grep {params.symbol} {input.gtf} | grep exon > fastas/{params.symbol}-exon_tmp.bed
+        python {params.convert} fastas/{params.symbol}-exon_tmp.bed fastas/{params.symbol}-intron_tmp.bed
+        bedtools getfasta -bed fastas/{params.symbol}-intron_tmp.bed -fi {input.fasta} -s > {output} 
+        '''
+
+rule get_exon_fasta:
+    input:
+        bed="fastas/{symbol}-exon.bed",
+        fasta=genome_fasta
+    output:
+        "fastas/{symbol}-exon.fa"
+    params:
+        symbol=lambda wildcards: wildcards.symbol
+    shell: # PERHAPS MAKE THIS EVERYTHING AFTER START CODON?! DEPENDS, ASK J-MAN
+        '''
+        echo \>{params.symbol} > {output}
+        bedtools getfasta -bed {input.bed} -fi {input.fasta} -s | awk 'NR%2==0' | tr -d '\n' >> {output} 
+        '''
+
+
+rule get_exon_bed:
+    input:
+        gtf
+    output:
+        "fastas/{symbol}-exon.bed"
+    params:
+        symbol=lambda wildcards: wildcards.symbol,
+        get_exon_bed=os.path.join(code_directory, 'get_exon_bed.py')
+    shell: 
+        "python {params.get_exon_bed} {input} {params.symbol} {output}"
+        
+
+# # gets the coordinates of the coding sequence from the hg19 gtf, then gets the fasta of those exons and slaps together
+# # flips the order if there is an opposite strand transcript
+# rule get_exon_fasta:
+#     input:
+#         gtf=gtf,
+#         fasta=genome_fasta
+#     output:
+#         "fastas/{symbol}-exon.fa"
+#     params:
+#         symbol=lambda wildcards: wildcards.symbol,
+#         to_grep='exon' # note, can also change this to CDS, in which case we will only design probes against the coding sequence, but we are going to design against all RNA
+#     shell: # PERHAPS MAKE THIS EVERYTHING AFTER START CODON?! DEPENDS, ASK J-MAN
+#     # ONLY GREP EXACT MATCHES, NOT THIS PPIFOS THING!!!
+#         '''
+#         echo \>{params.symbol} > {output}
+#         if grep {params.symbol} {input.gtf} | grep {params.to_grep} | bedtools getfasta -bed - -fi {input.fasta} -s | grep "(-)"; then 
+#             grep {params.symbol} {input.gtf} | grep {params.to_grep} | bedtools getfasta -bed - -fi {input.fasta} -s | awk 'NR%2==0' | tac | tr -d '\n' >> {output} 
+#         else 
+#             grep {params.symbol} {input.gtf} | grep {params.to_grep} | bedtools getfasta -bed - -fi {input.fasta} -s | awk 'NR%2==0' | tr -d '\n' >> {output} 
+#         fi
+#         '''
