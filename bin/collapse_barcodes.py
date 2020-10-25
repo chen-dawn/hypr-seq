@@ -6,7 +6,7 @@ import numpy as np
 import seaborn as sns
 from scipy.sparse import csr_matrix, csc_matrix, save_npz
 from scipy.sparse.csgraph import connected_components
-from scipy.misc import comb
+from scipy.special import comb
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 plt.switch_backend('agg')
