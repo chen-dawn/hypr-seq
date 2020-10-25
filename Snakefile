@@ -22,7 +22,6 @@ def new_format_field(self, value, format_spec):
 SequenceFormatter.format_field = new_format_field
 
 # defining global variables
-mip_directory = '/seq/lincRNA/Projects/MIP/mip-pipeline/bin'
 
 def parse_sample_sheet(path_to_sample_sheet):
     # add in column for downsampling, if necessary
@@ -40,6 +39,7 @@ readlen = config['readlen']
 cbc_len = config['cbc']
 cbc = ''.join(['C' for _ in range(cbc_len)])
 thresh = config.get('thresh', 0.005) # 0.005 what about 0.01?
+mip_directory = config['codedir']
 
 # get the sample sheet to determine what we actually need to run on
 sample_sheet = parse_sample_sheet(config['sample_sheet'])
@@ -463,7 +463,7 @@ rule filter_fastqs:
         json="{sample}/log/{sample}_fastp.json"
     params:
         filter=path.join(mip_directory, 'filter_paired_fastqs_by_length.py'),
-        fastp='/seq/lincRNA/Projects/MIP/jesse/190509_Test/fastp'
+        fastp='fastp'
     shell:
         "{params.fastp} -i {input.r1} -I {input.r2} -o {output.r1} -O {output.r2} \
             --length_required {cbc_len} -h {output.html} -j {output.json}"
