@@ -14,12 +14,13 @@ Code for most of the analyses is in bin/, with cluster specific files in cluster
 - Edit/run the following commands (example uses SLURM cluster):
 
   git clone --branch Sherlock git@github.com:EngreitzLab/hypr-seq.git
+  
   snakemake -s Snakefile -j <MaxJobs> -r -p \
     --directory <YourProjectDirectory> \
     --cluster "sbatch -J HYPR -n 1 -c 1 --export=ALL --mem {cluster.memory}G --wrap" \
     --jobscript cluster-config/jobscript.sh \
     --cluster-config cluster-config/cluster.json \
-     -k -w 60 --configfile example/params.json --config sample_sheet=<SampleSheet> codedir=bin/
+    -k -w 60 --configfile example/params.json --config sample_sheet=<SampleSheet> codedir=bin/
 
 #### Samplesheet specs
 See example in example/SampleList.txt
