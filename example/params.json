@@ -5,8 +5,5 @@
     "hamming": 1,
     "readlen": 25,
     "thresh": 0.01,
-    "method": "directional",
-    "crop_minreads": 20,
-    "crop_chastity": 5.0,
-    "crop_fraction": 0.6
+    "method": "directional"
 }
