@@ -1339,17 +1339,18 @@ def average_across_cells_and_plot(count_matrix, plots, output_file, title='Probe
 # note that in order to be extensible this count table has to have a column called 'target' where negative control cells
 # have the value 'negative_control'
 def compute_normalized_expression(counts, target_gene, control_genes):
-    counts['relative'] = counts[target_gene].sum(axis=1) / counts[control_genes].sum(axis=1)
+    # counts['relative'] = counts[target_gene].sum(axis=1) / counts[control_genes].sum(axis=1)
+    counts['relative'] = counts[target_gene] / counts[control_genes].sum(axis=1)
     counts['normalized'] = counts['relative'] / counts.loc[counts['target'] == 'negative_control', 'relative'].mean()
     return counts['normalized']
 
-p16_order = ['NC-1','NC-2','NC-4','NC-5','NC-6','NC-7','NC-8','NC-9','GATA1-TSS-1','GATA1-TSS-2','HDAC6-TSS-1','HDAC6-TSS-2','e-GATA1-1','e-GATA1-2','e-HDAC6-1','e-HDAC6-2']
-p16_hue_order = ['NC', 'GATA1-TSS', 'HDAC6-TSS', 'e-GATA1', 'e-HDAC6']
+# p16_order = ['NC-1','NC-2','NC-4','NC-5','NC-6','NC-7','NC-8','NC-9','GATA1-TSS-1','GATA1-TSS-2','HDAC6-TSS-1','HDAC6-TSS-2','e-GATA1-1','e-GATA1-2','e-HDAC6-1','e-HDAC6-2']
+# p16_hue_order = ['NC', 'GATA1-TSS', 'HDAC6-TSS', 'e-GATA1', 'e-HDAC6']
 
 def plot_p16_barplot_violinplot(counts, target_gene, plots):
     # bar plot
     plt.figure(figsize=(16, 6))
-    ax = sns.barplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', hue_order=p16_hue_order, dodge=False, order=p16_order)
+    ax = sns.barplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False) #, order=p16_order, hue_order=p16_hue_order)
     ax.set(xticklabels=[])
     ax.set_title(target_gene)
     plt.tight_layout()
@@ -1358,8 +1359,8 @@ def plot_p16_barplot_violinplot(counts, target_gene, plots):
 
     # violin plot with scatter
     plt.figure(figsize=(16, 6))
-    ax = sns.violinplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', hue_order=p16_hue_order, dodge=False, order=p16_order)
-    ax = sns.stripplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', hue_order=p16_hue_order, dodge=False, order=p16_order, jitter=True, alpha=0.3)
+    ax = sns.violinplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False) #, hue_order=p16_hue_order, order=p16_order)
+    ax = sns.stripplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, jitter=True, alpha=0.3) #, hue_order=p16_hue_order, order=p16_order)
     ax.set(xticklabels=[])
     ax.set_title(target_gene)
     plt.tight_layout()
@@ -1368,12 +1369,12 @@ def plot_p16_barplot_violinplot(counts, target_gene, plots):
 
 
 def groupby_and_report_stats(counts, target_gene, output_file, by='guide', alpha=0.05):
-    counts.groupby(by)['{}_normalized'.format(target_gene)].agg([('mean', np.mean), ('std', np.std), ('n', len), ('sem', sem), ('conf_{}'.format(alpha), lambda value: norm.ppf(1-alpha/2) * sem(value)), ('p_val', lambda value: ttest_ind(value, counts.loc[counts.type == 'NC', '{}_normalized'.format(target_gene)], nan_policy='omit').pvalue)]).to_csv(output_file, sep='\t')
+    counts.groupby(by)['{}_normalized'.format(target_gene)].agg([('mean', np.mean), ('std', np.std), ('n', len), ('sem', sem), ('conf_{}'.format(1-alpha), lambda value: norm.ppf(1-alpha/2) * sem(value)), ('p_val', lambda value: ttest_ind(value, counts.loc[counts.target == 'negative_control', '{}_normalized'.format(target_gene)], nan_policy='omit').pvalue)]).to_csv(output_file, sep='\t')
 
 
-def compute_plot_and_save_p16_knockdown(counts, target_gene, target_gene_cols, gapdh_col, plots, guide_stats, element_stats, log):
+def compute_plot_and_save_p16_knockdown(counts, target_gene, housekeeping_genes, plots, guide_stats, element_stats, log):
     # calculate normalized column
-    counts['{}_normalized'.format(target_gene)] = compute_normalized_expression(counts, target_gene_cols, [gapdh_col])
+    counts['{}_normalized'.format(target_gene)] = compute_normalized_expression(counts, target_gene, housekeeping_genes)
 
     # plot bar/violin plots
     plot_p16_barplot_violinplot(counts, target_gene, plots)
@@ -1384,31 +1385,29 @@ def compute_plot_and_save_p16_knockdown(counts, target_gene, target_gene_cols, g
 
 
 # main function that analyzes p16 data
-def analyze_p16_data(collapsed_counts, plots, guide_stats, element_stats, log):
-    gapdh_col = collapsed_counts.filter(like='GAPDH').columns[0] # in case the GAPDH column has a new name
-    gata1_col = 'GATA1'
-    intron_cols = ['GATA1Intron', 'GAT1Int']
+def analyze_p16_data(collapsed_counts, housekeeping_genes, target_genes, plots, guide_stats, element_stats, log):
+    # gapdh_col = collapsed_counts.filter(like='GAPDH').columns[0] # in case the GAPDH column has a new name
+    # gata1_col = 'GATA1'
+    # intron_cols = ['GATA1Intron', 'GAT1Int']
 
-    compute_plot_and_save_p16_knockdown(collapsed_counts, gata1_col, [gata1_col], gapdh_col, plots, guide_stats, element_stats, log)
+    # compute_plot_and_save_p16_knockdown(collapsed_counts, gata1_col, [gata1_col], gapdh_col, plots, guide_stats, element_stats, log)
 
-    for intron_col in intron_cols:
-        if intron_col in collapsed_counts.columns:
-            log.write('Intron col: {}\n'.format(intron_col))
-            guide_stats_intron, element_stats_intron = guide_stats.replace('guide_stats', 'guide_stats_{}'.format(intron_col)), element_stats.replace('element_stats', 'element_stats_{}'.format(intron_col))
-            compute_plot_and_save_p16_knockdown(collapsed_counts, intron_col, [intron_col], gapdh_col, plots, guide_stats_intron, element_stats_intron, log)
+    for target in target_genes:
+        guide_stats_gene, element_stats_gene = guide_stats.replace('guide_stats', 'guide_stats_{}'.format(target)), element_stats.replace('element_stats', 'element_stats_{}'.format(target))
+        compute_plot_and_save_p16_knockdown(collapsed_counts, target_gene, housekeeping_genes, plots, guide_stats_gene, element_stats_gene, log)
 
-    # now do generically for all intron probes together
-    intron_cols_to_include = [c for c in intron_cols if c in collapsed_counts.columns]
-    log.write('Intron col: {}\n'.format('gata1-intron'))
-    guide_stats_intron, element_stats_intron = guide_stats.replace('guide_stats', 'guide_stats_gata1-intron'), element_stats.replace('element_stats', 'element_stats_gata1-intron')
-    compute_plot_and_save_p16_knockdown(collapsed_counts, 'gata1-intron', intron_cols_to_include, gapdh_col, plots, guide_stats_intron, element_stats_intron, log)
+    # # now do generically for all intron probes together
+    # intron_cols_to_include = [c for c in intron_cols if c in collapsed_counts.columns]
+    # log.write('Intron col: {}\n'.format('gata1-intron'))
+    # guide_stats_intron, element_stats_intron = guide_stats.replace('guide_stats', 'guide_stats_gata1-intron'), element_stats.replace('element_stats', 'element_stats_gata1-intron')
+    # compute_plot_and_save_p16_knockdown(collapsed_counts, 'gata1-intron', intron_cols_to_include, gapdh_col, plots, guide_stats_intron, element_stats_intron, log)
     
-    # now do HDAC6 + intron
-    guide_stats_hdac6, element_stats_hdac6 = guide_stats.replace('guide_stats', 'guide_stats_hdac6'), element_stats.replace('element_stats', 'element_stats_hdac6')
-    compute_plot_and_save_p16_knockdown(collapsed_counts, 'HDAC6', ['HDAC6NM_001321225'], gapdh_col, plots, guide_stats_hdac6, element_stats_hdac6, log)
+    # # now do HDAC6 + intron
+    # guide_stats_hdac6, element_stats_hdac6 = guide_stats.replace('guide_stats', 'guide_stats_hdac6'), element_stats.replace('element_stats', 'element_stats_hdac6')
+    # compute_plot_and_save_p16_knockdown(collapsed_counts, 'HDAC6', ['HDAC6NM_001321225'], gapdh_col, plots, guide_stats_hdac6, element_stats_hdac6, log)
 
-    guide_stats_hdac6_int, element_stats_hdac6_int = guide_stats.replace('guide_stats', 'guide_stats_hdac6_int'), element_stats.replace('element_stats', 'element_stats_hdac6_int')
-    compute_plot_and_save_p16_knockdown(collapsed_counts, 'HDAC6-intron', ['HDAC6Intron4'], gapdh_col, plots, guide_stats_hdac6_int, element_stats_hdac6_int, log)
+    # guide_stats_hdac6_int, element_stats_hdac6_int = guide_stats.replace('guide_stats', 'guide_stats_hdac6_int'), element_stats.replace('element_stats', 'element_stats_hdac6_int')
+    # compute_plot_and_save_p16_knockdown(collapsed_counts, 'HDAC6-intron', ['HDAC6Intron4'], gapdh_col, plots, guide_stats_hdac6_int, element_stats_hdac6_int, log)
 
 def plot_crop_dictionary(dictionary, plots, reads_thresh=None, fraction_thresh=None):
     # plt.scatter(np.log10(dictionary['reads']), dictionary['fraction'], alpha=0.1)
