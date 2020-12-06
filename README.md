@@ -15,7 +15,7 @@ Code for going from fastqs to count tables (+ QCs) is in bin/, cluster + conda f
 
   git clone --branch Sherlock git@github.com:EngreitzLab/hypr-seq.git
   
-  snakemake -s Snakefile -j <MaxJobs> -r -p \
+  snakemake -s Snakefile -j \<MaxJobs\> -r -p \
     --directory <YourProjectDirectory> \
     --cluster "sbatch -J HYPR -n 1 -c 1 --export=ALL --mem {cluster.memory}G --wrap" \
     --jobscript cluster-config/jobscript.sh \
@@ -29,7 +29,7 @@ See example in example/SampleList.txt
 
 The samplesheet is a tab-delimited text file, with one line per sample (pair of FASTQ files), with the following columns:
 - ID - **unique** integer ID per sample, must not be duplicated on one sample sheet (so you can have the same English name for different samples, if you want)
-- Name - plain English name describing the sample (no spaces), can be shared between samples (outputs will be stored in a directory called <Name>-<ID>)
+- Name - plain English name describing the sample (no spaces), can be shared between samples (outputs will be stored in a directory called Name-ID)
 - Read1 - full path to the fastq.gz file containing read1 (UMI + transcript-binding probe)
 - Read2 - full path to the fastq.gz file containing read2 (cell barcode)
 - ProbeName - plain name to describe the bowtie index that will be built from the provided probe list (helpful to name it in agreement with ProbePath below, but it doesn't matter)
