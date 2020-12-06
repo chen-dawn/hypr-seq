@@ -9,7 +9,7 @@ kidney_pipeline.py has code to cluster the HyPR-seq data, assign cell types, and
 splenocyte_pipeline.py has code to compare the 250- and 1000-probe experiments, assign HyPR-seq cells to clusters based on pre-existing scRNA-seq data, and to plot gene expression heatmaps.
 
 ## CRISPR Screen
-analyze_crispr_screen.py has code used to process HyPR-seq data from the small pooled CRISPR screen performed in the paper. It can assign guides to cells, aggregate cells by guide, and plot relative gene expression. To run, it requires the following files:
+analyze_crispr_screen.py has code used to process HyPR-seq data from the small pooled CRISPR screen performed in the paper. It can assign guides to cells, aggregate cells by guide, and plot relative gene expression. To run, it requires the following:
 - Collapsed count table, {sample}/{sample}\_collapsed\_emul.count\_matrix.txt from the output folder
 - Uncollapsed count table, {sample}/{sample}\_uncollapsed\_emul.count\_matrix.txt from the output folder
 - Barcode stats file, {sample}/tmp/{sample}.collapse\_bc\_stats.txt from the output folder
@@ -27,6 +27,6 @@ Optional
 - dCas9 transcript, what probe name to use as the proxy for KRAB-dCas9 expression (default: 'BFP')
 
 
-python analyze_crispr_screen.py --collapsed \<collapsed_file\> --uncollapsed \<uncollapsed_file\> --barcode_stats \<barcode_stats_file\> \
-	--guide_info \<collapsed_file\> --target_genes \<GENE1,GENE2\> --housekeeping_genes \<GENE1,GENE2,GENE3\> --outdir \<OutputDirectory\> \
-	--name \<Sample\> --codedir \</path/to/hypr-seq\>
+python analyze_crispr_screen.py --collapsed \<CollapsedFile\> --uncollapsed \<UncollapsedFile\> --barcode_stats \<BarcodeStatsFile\> \
+	--guide_info \<GuideInfoFile\> --target_genes GENE1,GENE2 --housekeeping_genes GENE1,GENE2,GENE3 --outdir \<OutputDirectory\> \
+	--name \<Sample\> --codedir /path/to/hypr-seq
