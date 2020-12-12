@@ -1347,10 +1347,10 @@ def compute_normalized_expression(counts, target_gene, control_genes):
 # p16_order = ['NC-1','NC-2','NC-4','NC-5','NC-6','NC-7','NC-8','NC-9','GATA1-TSS-1','GATA1-TSS-2','HDAC6-TSS-1','HDAC6-TSS-2','e-GATA1-1','e-GATA1-2','e-HDAC6-1','e-HDAC6-2']
 # p16_hue_order = ['NC', 'GATA1-TSS', 'HDAC6-TSS', 'e-GATA1', 'e-HDAC6']
 
-def plot_p16_barplot_violinplot(counts, target_gene, plots):
+def plot_p16_barplot_violinplot(counts, target_gene, plots, order=None, hue_order=None):
     # bar plot
     plt.figure(figsize=(16, 6))
-    ax = sns.barplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False) #, order=p16_order, hue_order=p16_hue_order)
+    ax = sns.barplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, order=order, hue_order=hue_order) #, order=p16_order, hue_order=p16_hue_order)
     ax.set(xticklabels=[])
     ax.set_title(target_gene)
     plt.tight_layout()
@@ -1359,8 +1359,8 @@ def plot_p16_barplot_violinplot(counts, target_gene, plots):
 
     # violin plot with scatter
     plt.figure(figsize=(16, 6))
-    ax = sns.violinplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False) #, hue_order=p16_hue_order, order=p16_order)
-    ax = sns.stripplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, jitter=True, alpha=0.3) #, hue_order=p16_hue_order, order=p16_order)
+    ax = sns.violinplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, order=order, hue_order=hue_order) #, hue_order=p16_hue_order, order=p16_order)
+    ax = sns.stripplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, jitter=True, alpha=0.3, order=order, hue_order=hue_order) #, hue_order=p16_hue_order, order=p16_order)
     ax.set(xticklabels=[])
     ax.set_title(target_gene)
     plt.tight_layout()
@@ -1377,7 +1377,7 @@ def compute_plot_and_save_p16_knockdown(counts, target_gene, housekeeping_genes,
     counts['{}_normalized'.format(target_gene)] = compute_normalized_expression(counts, target_gene, housekeeping_genes)
 
     # plot bar/violin plots
-    plot_p16_barplot_violinplot(counts, target_gene, plots)
+    plot_p16_barplot_violinplot(counts, target_gene, plots, order=sorted(counts['guide'].unique()), hue_order=sorted(counts['type'].unique()))
 
     # report stats for guides and elements
     groupby_and_report_stats(counts, target_gene, guide_stats, by='guide')
@@ -1394,7 +1394,7 @@ def analyze_p16_data(collapsed_counts, housekeeping_genes, target_genes, plots, 
 
     for target in target_genes:
         guide_stats_gene, element_stats_gene = guide_stats.replace('guide_stats', 'guide_stats_{}'.format(target)), element_stats.replace('element_stats', 'element_stats_{}'.format(target))
-        compute_plot_and_save_p16_knockdown(collapsed_counts, target_gene, housekeeping_genes, plots, guide_stats_gene, element_stats_gene, log)
+        compute_plot_and_save_p16_knockdown(collapsed_counts, target, housekeeping_genes, plots, guide_stats_gene, element_stats_gene, log)
 
     # # now do generically for all intron probes together
     # intron_cols_to_include = [c for c in intron_cols if c in collapsed_counts.columns]
