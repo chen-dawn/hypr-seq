@@ -116,7 +116,7 @@ if __name__ == '__main__':
     
     parser.add_argument("--collapsed", dest="collapsed", type=str,  help="Collapsed counts file")
     parser.add_argument("--uncollapsed", dest="uncollapsed", type=str,  help="Uncollapsed counts file")
-    parser.add_argument("--barcode_stats", dest="barcode_stats", type=str,  help="Barcode multiplicity stats file")
+    parser.add_argument("--barcode_stats", dest="barcode_stats", type=str,  help="Barcode multiplicity stats file (in tmp)")
     parser.add_argument("--guide_info", dest="guide_info_file", type=str,  help="Information about guide+element status")
     parser.add_argument("--target_genes", dest="target_gene_list", type=str, default='GATA1', help="Comma-separated list of genes to plot knockdown of")
     parser.add_argument("--housekeeping_genes", dest="housekeeping_gene_list", type=str, default='GAPDH', help="Comma-separated list of housekeeping genes to normalize by")
