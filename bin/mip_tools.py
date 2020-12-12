@@ -1350,7 +1350,7 @@ def compute_normalized_expression(counts, target_gene, control_genes):
 def plot_p16_barplot_violinplot(counts, target_gene, plots, order=None, hue_order=None):
     # bar plot
     plt.figure(figsize=(16, 6))
-    ax = sns.barplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, order=order, hue_order=hue_order) #, order=p16_order, hue_order=p16_hue_order)
+    ax = sns.barplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, order=order, hue_order=hue_order)
     ax.set(xticklabels=[])
     ax.set_title(target_gene)
     plt.tight_layout()
@@ -1359,8 +1359,8 @@ def plot_p16_barplot_violinplot(counts, target_gene, plots, order=None, hue_orde
 
     # violin plot with scatter
     plt.figure(figsize=(16, 6))
-    ax = sns.violinplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, order=order, hue_order=hue_order) #, hue_order=p16_hue_order, order=p16_order)
-    ax = sns.stripplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, jitter=True, alpha=0.3, order=order, hue_order=hue_order) #, hue_order=p16_hue_order, order=p16_order)
+    ax = sns.violinplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, order=order, hue_order=hue_order)
+    ax = sns.stripplot(x='guide', y='{}_normalized'.format(target_gene), data=counts.loc[(counts.Barcode != 'Unassigned')], hue='type', dodge=False, jitter=True, alpha=0.3, order=order, hue_order=hue_order)
     ax.set(xticklabels=[])
     ax.set_title(target_gene)
     plt.tight_layout()
