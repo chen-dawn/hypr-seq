@@ -21,15 +21,15 @@ def new_format_field(self, value, format_spec):
 SequenceFormatter.format_field = new_format_field
 
 # defining global variables
-code_directory = '/seq/lincRNA/Projects/MIP/mip-pipeline/probe_design'
-# gtf = '/seq/lincRNA/data/hg19/RefSeqCurated.170308.gtf'
-# genome_fasta = '/seq/lincRNA/data/hg19/UCSC/hg19/Sequence/WholeGenomeFasta/genome.fa'
+code_directory = config['codedir']
 
 gtf = config['gtf']
 genome_fasta = config['genome_fasta']
 introns = config['introns']
 blastdb = config['blastdb']
 probes_per_gene = config.get('probes_per_gene', None)
+gene_name_field = config.get('gene_name_field', 'gene_id')
+search_basic_tag = config.get('search_basic_tag', False)
 
 def load_input_table(path_to_table):
     try:
@@ -119,7 +119,7 @@ rule get_exon_fasta:
         "fastas/{symbol}-exon.fa"
     params:
         symbol=lambda wildcards: wildcards.symbol
-    shell: # PERHAPS MAKE THIS EVERYTHING AFTER START CODON?! DEPENDS, ASK J-MAN
+    shell: # PERHAPS MAKE THIS EVERYTHING AFTER START CODON?
         '''
         echo \>{params.symbol} > {output}
         bedtools getfasta -bed {input.bed} -fi {input.fasta} -s | awk 'NR%2==0' | tr -d '\n' >> {output} 
@@ -133,9 +133,11 @@ rule get_exon_bed:
         "fastas/{symbol}-exon.bed"
     params:
         symbol=lambda wildcards: wildcards.symbol,
-        get_exon_bed=os.path.join(code_directory, 'get_exon_bed.py')
+        get_exon_bed=os.path.join(code_directory, 'get_exon_bed.py'),
+        gene_name_field=gene_name_field,
+        search_basic_tag=search_basic_tag
     shell: 
-        "python {params.get_exon_bed} {input} {params.symbol} {output}"
+        "python {params.get_exon_bed} {input} {params.symbol} {output} {params.gene_name_field} {params.search_basic_tag}"
         
 
 # # gets the coordinates of the coding sequence from the hg19 gtf, then gets the fasta of those exons and slaps together
