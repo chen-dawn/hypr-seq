@@ -1,0 +1,10 @@
+{
+	"input_table": "/oak/stanford/groups/engreitz/Users/bgrd/projects/hypr/210203_probe_designer_updates/210203_probe_genes.txt",
+	"gtf": "/oak/stanford/groups/engreitz/Users/bgrd/data/hypr/probe_design/hg19/RefSeqCurated.170308.gtf",
+	"genome_fasta": "/oak/stanford/groups/engreitz/Users/bgrd/data/hypr/probe_design/hg19/genome.fa",
+	"introns": false,
+	"blastdb": "/oak/stanford/groups/engreitz/Users/bgrd/data/hypr/probe_design/humanrefseq/humanrefseq.fna",
+	"probes_per_gene": "/oak/stanford/groups/engreitz/Users/bgrd/projects/hypr/210203_probe_designer_updates/210203_probe_number.txt",
+	"gene_name_field": "gene_id",
+	"search_tag_basic": false
+}
