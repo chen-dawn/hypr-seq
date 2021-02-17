@@ -75,7 +75,8 @@ rule design_probes:
         # introns=['HomologyRegionsHCR/{}-intron.fa'.format(symbol) for symbol in gene_table[1].unique()],
         # exons=['HomologyRegionsHCR/{}-exon.fa'.format(symbol) for symbol in gene_table[1].unique()]
     output:
-        "probes.csv"
+        "probes.csv",
+        "genes_with_no_probes.txt"
     params:
         probes_per_gene_file=lambda wildcards: "probes_per_gene_file='{}';".format(probes_per_gene) if probes_per_gene else "probes_per_gene_file=false;"
     shell:

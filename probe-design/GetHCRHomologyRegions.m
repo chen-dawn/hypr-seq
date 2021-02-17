@@ -108,9 +108,9 @@ for y=1:length(Sequence)
         %only blast if sequence properties are good
         if hits == false 
             blastout = blastlocal('InputQuery',strcat('fastas/', ref_seq, '-', intron, '-blast-temp.fa'),'Program','blastn','DataBase', blastdb, 'blastargs', '-S 1 -F F');
-            blastout.Hits;
-            for i = 1:length(blastout.Hits)
+            % for i = 1:length(blastout.Hits)
             % for i = 1:numel(blastout.Hits)
+            for i = 1:length(blastout.Hits)
                 if isempty(strfind(blastout.Hits(i).Name, genename)) %ignore same gene
                     if isempty(strfind(blastout.Hits(i).Name, 'PREDICTED')) && isempty(strfind(blastout.Hits(i).Name, 'predicted')) %ignore predicted
                         if isempty(strfind(blastout.Hits(i).Name, 'RIKEN'))
@@ -163,6 +163,16 @@ sequence_features
 blast_failure
 correct
 total
+
+% no valid probes
+if correct == 0
+    fasta.Sequence = 'N';
+    fasta.Header = 'WARNING: NO VALID PROBES';
+    fastawrite(outfasta, fasta)
+    % fclose(fopen(outfasta, 'w'));
+    % also write to some universal empty file thing
+end
+
 
 for ii = 1:max(size(List))
     RevList{ii} = seqrcomplement(List{ii});

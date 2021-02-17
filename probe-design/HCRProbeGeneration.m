@@ -12,6 +12,8 @@ if probes_per_gene_file
     check_probe_number = true;
 end
 
+% open file for writing bad probes
+fileBadGenes = fopen('genes_with_no_probes.txt','wt');
 
 % Files
 for j=1:length(Files)
@@ -30,6 +32,12 @@ for j=1:length(Files)
 
    % [Header, Sequence] = fastaread(Files(j).name);
     [Header, Sequence] = fastaread(strcat(directory, '/HomologyRegionsHCR/', Files(j).name));
+    
+    % check if empty
+    if isa(Header, 'char') & string(Header) == 'WARNING: NO VALID PROBES'
+        fprintf(fileBadGenes, '%s\n', Files(j).name);
+        continue
+    end
 
     if isa(Sequence, 'char')
         Sequence = string(Sequence); 
@@ -61,6 +69,7 @@ probes1
 filePh = fopen('probes.csv','w');
 fprintf(filePh,strcat(repmat('%s,',1,length(Files)-1), '%s\n'),probes1{:});
 fclose(filePh);
+fclose(fileBadGenes);
 % strcat(repmat('%s,',1,4*numProbes-1), '%s\n')
 % writetable(probes1, 'probes.csv')
 
