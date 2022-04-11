@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 19:28:39 2022]
+rule emul_extraction:
+    input: Kai_MDDC_PFA1_2-1/tmp/Kai_MDDC_PFA1_2-1_R1_001.filtered.fastq.gz, Kai_MDDC_PFA1_2-1/tmp/Kai_MDDC_PFA1_2-1_R2_001.filtered.fastq.gz, Kai_MDDC_PFA1_2-1/tmp/Kai_MDDC_PFA1_2-1_uncollapsed_whitelist.txt
+    output: Kai_MDDC_PFA1_2-1/tmp/Kai_MDDC_PFA1_2-1_uncollapsed_R1_001.emul_extracted.fastq.gz, Kai_MDDC_PFA1_2-1/log/Kai_MDDC_PFA1_2-1_uncollapsed.extract.log
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA1_2-1, collapsed=uncollapsed
+    resources: mem_mb=4074, disk_mb=4074, tmpdir=/local/scratch/30803059.1.broad
+
+umi_tools extract --stdin Kai_MDDC_PFA1_2-1/tmp/Kai_MDDC_PFA1_2-1_R1_001.filtered.fastq.gz --read2-in=Kai_MDDC_PFA1_2-1/tmp/Kai_MDDC_PFA1_2-1_R2_001.filtered.fastq.gz             --stdout Kai_MDDC_PFA1_2-1/tmp/Kai_MDDC_PFA1_2-1_uncollapsed_R1_001.emul_extracted.fastq.gz --bc-pattern=NNNNNNNNNN --bc-pattern2=CCCCCCCCCCCC             -L Kai_MDDC_PFA1_2-1/log/Kai_MDDC_PFA1_2-1_uncollapsed.extract.log --filter-cell-barcode --whitelist=Kai_MDDC_PFA1_2-1/tmp/Kai_MDDC_PFA1_2-1_uncollapsed_whitelist.txt 
+[Fri Apr  8 20:00:15 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

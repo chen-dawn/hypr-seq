@@ -1,0 +1,69 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 19:05:02 2022]
+rule filter_fastqs:
+    input: Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R1_001.downsampled.fastq.gz, Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R2_001.downsampled.fastq.gz
+    output: Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R1_001.filtered.fastq.gz, Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R2_001.filtered.fastq.gz, Kai_MDDC_PBS_Methanol1-2/log/Kai_MDDC_PBS_Methanol1-2_fastp.html, Kai_MDDC_PBS_Methanol1-2/log/Kai_MDDC_PBS_Methanol1-2_fastp.json
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PBS_Methanol1-2
+    resources: mem_mb=1053, disk_mb=1053, tmpdir=/local/scratch/30802832.1.broad
+
+fastp -i Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R1_001.downsampled.fastq.gz -I Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R2_001.downsampled.fastq.gz -o Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R1_001.filtered.fastq.gz -O Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R2_001.filtered.fastq.gz             --length_required 12 -h Kai_MDDC_PBS_Methanol1-2/log/Kai_MDDC_PBS_Methanol1-2_fastp.html -j Kai_MDDC_PBS_Methanol1-2/log/Kai_MDDC_PBS_Methanol1-2_fastp.json
+Read1 before filtering:
+total reads: 12431468
+total bases: 519367565
+Q20 bases: 465966574(89.7181%)
+Q30 bases: 452986933(87.2189%)
+
+Read2 before filtering:
+total reads: 12431468
+total bases: 174040552
+Q20 bases: 167778194(96.4018%)
+Q30 bases: 165882252(95.3124%)
+
+Read1 after filtering:
+total reads: 12170761
+total bases: 508474777
+Q20 bases: 456610188(89.8%)
+Q30 bases: 443966147(87.3133%)
+
+Read2 after filtering:
+total reads: 12170761
+total bases: 170390654
+Q20 bases: 165271282(96.9955%)
+Q30 bases: 163549882(95.9852%)
+
+Filtering result:
+reads passed filter: 24341522
+reads failed due to low quality: 266388
+reads failed due to too many N: 156
+reads failed due to too short: 254870
+reads with adapter trimmed: 0
+bases trimmed due to adapters: 0
+
+Duplication rate: 0.47383%
+
+Insert size peak (evaluated by paired-end reads): 0
+
+JSON report: Kai_MDDC_PBS_Methanol1-2/log/Kai_MDDC_PBS_Methanol1-2_fastp.json
+HTML report: Kai_MDDC_PBS_Methanol1-2/log/Kai_MDDC_PBS_Methanol1-2_fastp.html
+
+fastp -i Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R1_001.downsampled.fastq.gz -I Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R2_001.downsampled.fastq.gz -o Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R1_001.filtered.fastq.gz -O Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R2_001.filtered.fastq.gz --length_required 12 -h Kai_MDDC_PBS_Methanol1-2/log/Kai_MDDC_PBS_Methanol1-2_fastp.html -j Kai_MDDC_PBS_Methanol1-2/log/Kai_MDDC_PBS_Methanol1-2_fastp.json 
+fastp v0.23.2, time used: 30 seconds
+[Fri Apr  8 19:05:33 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

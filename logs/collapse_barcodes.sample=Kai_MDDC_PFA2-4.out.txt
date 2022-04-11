@@ -1,0 +1,159 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 22:11:25 2022]
+rule collapse_barcodes:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30804009.1.broad
+
+python bin/collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Sat Apr  9 02:38:39 2022]
+rule collapse_barcodes:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30808165.1.broad
+
+python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Sat Apr  9 03:23:23 2022]
+rule collapse_barcodes:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30808360.1.broad
+
+python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+/bin/bash: line 1: 152646 Killed                  python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+[Sat Apr  9 07:35:05 2022]
+Error in rule collapse_barcodes:
+    jobid: 0
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    shell:
+        python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job collapse_barcodes since they might be corrupted:
+Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Sat Apr  9 15:48:29 2022]
+rule collapse_barcodes:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30812804.1.broad
+
+python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Sat Apr  9 16:03:01 2022]
+rule collapse_barcodes:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30812826.1.broad
+
+python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+/bin/bash: line 1: 236341 Killed                  python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+[Sat Apr  9 20:06:52 2022]
+Error in rule collapse_barcodes:
+    jobid: 0
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    shell:
+        python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job collapse_barcodes since they might be corrupted:
+Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Sun Apr 10 00:00:05 2022]
+rule collapse_barcodes:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30815277.1.broad
+
+python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+/bin/bash: line 1: 15221 Killed                  python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+[Sun Apr 10 05:31:20 2022]
+Error in rule collapse_barcodes:
+    jobid: 0
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+    shell:
+        python bin//collapse_barcodes.py -g Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz -w Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_whitelist.txt -f Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_collapsed_filtered_whitelist.txt -b Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_bc_stats.txt             -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz -p Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf -l Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt -s Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt -t 0.01 -c Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png -m Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_clustermap_raw.png
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job collapse_barcodes since they might be corrupted:
+Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes.plots.pdf, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4.collapse_barcodes.log.txt, Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4.collapse_barcodes.stats.txt, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4.collapse_adjacency_mat.npz, Kai_MDDC_PFA2-4/Kai_MDDC_PFA2-4.collapse_barcodes_histogram.png
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

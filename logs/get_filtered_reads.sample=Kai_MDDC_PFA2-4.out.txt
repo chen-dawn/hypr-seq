@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 19:39:43 2022]
+rule get_filtered_reads:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R1_001.filtered.fastq.gz
+    output: Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4_filtered.stats.txt
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4
+    resources: mem_mb=2148, disk_mb=2148, tmpdir=/local/scratch/30803084.1.broad
+
+zcat Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R1_001.filtered.fastq.gz | echo -e "FilteredReads	$((`wc -l`/4))" > Kai_MDDC_PFA2-4/stats/Kai_MDDC_PFA2-4_filtered.stats.txt
+[Fri Apr  8 19:40:38 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

@@ -8,10 +8,8 @@ from scipy.sparse.csgraph import connected_components
 import distance
 plt.switch_backend('agg')
 from scipy.stats import zscore, entropy, norm, sem, ttest_ind
-import openpyxl
 from scipy.cluster import hierarchy as hc
 from scipy import spatial as sp
-import os
 from os import path
 from glob import glob
 from scipy.optimize import minimize_scalar
@@ -220,7 +218,7 @@ def histogram_wrapper(data, output_plot, xlabel, ylabel, title, log=True):
     data = np.asarray(data)
     outlier_aware_hist(data, *calculate_bounds(data), cdf=False)
     if log:
-        plt.yscale('log', nonposy='clip')
+        plt.yscale('log', nonpositive='clip')
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.title(title)
@@ -256,7 +254,7 @@ def plot_histogram_and_cdf(data, output_plot, xlabel=None, ylabel=None, title=No
 # plots histogram and cdf of reads / umi for the given dict in output_plot and returns the average
 def plot_umi_distance(edit_dist_per_umi, output_plot):
     plt.hist(edit_dist_per_umi, bins=11)
-    plt.yscale('log', nonposy='clip')
+    plt.yscale('log', nonpositive='clip')
     plt.xlabel('Edit Distance between Sequenced UMI and Representative UMI')
     plt.ylabel('Number of UMIs')
     plt.title('Edit Distance')
@@ -334,7 +332,7 @@ def plot_counts_per_gene(collapsed_counts, plots, gene_counts, excel_file):
     pd.DataFrame(counts_per_gene).reset_index().to_excel(excel_file, header=False, index=False)
 
     counts_per_gene.plot.bar()
-    plt.yscale('log', nonposy='clip')
+    plt.yscale('log', nonpositive='clip')
     plt.ylabel('Counts across all cells')
     plt.xlabel('Gene')
     plt.title('Sum of genes across cells')
@@ -461,7 +459,7 @@ def plot_adjacency_matrix(adjacency_matrix, labels, plots, thresh, log, histogra
     # plot the histogram
     plt.hist(np.clip(adjacency_matrix.ravel(), a_min=0, a_max=1), bins=100) # bins='auto'
     plt.axvline(thresh, label='Chosen threshold', c='r', ls='--')
-    plt.yscale('log', nonposy='clip')
+    plt.yscale('log', nonpositive='clip')
     plt.title('Overlap values per pair of CBCs')
     plt.ylabel('Number of barcode pairs')
     plt.xlabel('Overlap metric')
@@ -722,7 +720,7 @@ def plot_probes_per_transcript(counts, probe, plots):
     subset_sum.plot.bar(x='ProbeNum', y=probe, legend=None)
 
     plt.title('Counts per probe: {}'.format(probe))
-    plt.yscale('log', nonposy='clip')
+    plt.yscale('log', nonpositive='clip')
     plt.ylim(1, plot_scale * subset_sum[probe].values.max())
     plt.ylabel('Sum of reads per probe across cells')
     plt.tight_layout()
@@ -1307,7 +1305,7 @@ def sum_across_cells_and_plot(count_matrix, plots, output_file, excel_file, titl
         pd.DataFrame(marginal_counts).reset_index().to_excel(excel_file, header=False, index=False)
 
     marginal_counts.plot.bar()
-    plt.yscale('log', nonposy='clip')
+    plt.yscale('log', nonpositive='clip')
     plt.ylabel('Counts across all cells: {}'.format(title))
     plt.xlabel(title)
     plt.title('Sum of {} across cells'.format(title))
@@ -1327,7 +1325,7 @@ def average_across_cells_and_plot(count_matrix, plots, output_file, title='Probe
     fig, ax = plt.subplots(figsize=(25,15))
     sns.barplot(y='value', x='gene', data=melted, ax=ax)
     plt.xticks(rotation=90)
-    plt.yscale('log', nonposy='clip')
+    plt.yscale('log', nonpositive='clip')
     plt.ylabel('Average across all cells: {}'.format(title))
     plt.xlabel(title)
     plt.title('Average of {} across cells'.format(title))

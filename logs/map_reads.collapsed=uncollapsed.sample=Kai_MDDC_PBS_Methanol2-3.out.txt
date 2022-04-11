@@ -1,0 +1,46 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 19:48:08 2022]
+rule map_reads:
+    input: Kai_MDDC_PBS_Methanol2-3/tmp/Kai_MDDC_PBS_Methanol2-3_uncollapsed_R1_001.extracted.trim.fastq.gz, bowtie/KL_ProbeList.1.ebwt
+    output: Kai_MDDC_PBS_Methanol2-3/tmp/Kai_MDDC_PBS_Methanol2-3_uncollapsed.extracted.trim.sam, Kai_MDDC_PBS_Methanol2-3/log/Kai_MDDC_PBS_Methanol2-3_uncollapsed.bowtie.log
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PBS_Methanol2-3, collapsed=uncollapsed
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30803103.1.broad
+
+bowtie bowtie/KL_ProbeList <( gunzip < Kai_MDDC_PBS_Methanol2-3/tmp/Kai_MDDC_PBS_Methanol2-3_uncollapsed_R1_001.extracted.trim.fastq.gz ) -v 1 --sam > Kai_MDDC_PBS_Methanol2-3/tmp/Kai_MDDC_PBS_Methanol2-3_uncollapsed.extracted.trim.sam 2> Kai_MDDC_PBS_Methanol2-3/log/Kai_MDDC_PBS_Methanol2-3_uncollapsed.bowtie.log
+[Fri Apr  8 19:49:01 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]
+0    0
+1    1
+2    2
+3    3
+4    4
+5    5
+6    6
+Name: ID, dtype: int64
+0    False
+1    False
+2    False
+3     True
+4    False
+5    False
+6    False
+Name: ID, dtype: bool
+KL_ProbeList
+Kai_MDDC_PBS_Methanol2-3

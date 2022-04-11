@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 19:02:25 2022]
+rule downsample:
+    input: /broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PBS_Methanol1_S3_R2_001.fastq.gz
+    output: Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R2_001.downsampled.fastq.gz
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PBS_Methanol1-2, read=2
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30802821.1.broad
+
+cp /broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PBS_Methanol1_S3_R2_001.fastq.gz Kai_MDDC_PBS_Methanol1-2/tmp/Kai_MDDC_PBS_Methanol1-2_R2_001.downsampled.fastq.gz
+[Fri Apr  8 19:02:28 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

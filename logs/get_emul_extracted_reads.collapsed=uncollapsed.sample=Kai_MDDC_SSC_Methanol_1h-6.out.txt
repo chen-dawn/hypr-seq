@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 20:08:47 2022]
+rule get_emul_extracted_reads:
+    input: Kai_MDDC_SSC_Methanol_1h-6/tmp/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed_R1_001.emul_extracted.fastq.gz
+    output: Kai_MDDC_SSC_Methanol_1h-6/stats/Kai_MDDC_SSC_Methanol_1h-6_emul_extracted_uncollapsed.stats.txt
+    jobid: 0
+    wildcards: sample=Kai_MDDC_SSC_Methanol_1h-6, collapsed=uncollapsed
+    resources: mem_mb=1537, disk_mb=1537, tmpdir=/local/scratch/30803159.1.broad
+
+zcat Kai_MDDC_SSC_Methanol_1h-6/tmp/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed_R1_001.emul_extracted.fastq.gz | echo -e "ExtractedReads_uncollapsed	$((`wc -l`/4))" > Kai_MDDC_SSC_Methanol_1h-6/stats/Kai_MDDC_SSC_Methanol_1h-6_emul_extracted_uncollapsed.stats.txt
+[Fri Apr  8 20:09:24 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

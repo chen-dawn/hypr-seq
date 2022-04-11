@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 19:34:53 2022]
+rule whitelist_cbcs:
+    input: Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_R1_001.filtered.fastq.gz, Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_R2_001.filtered.fastq.gz
+    output: Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_uncollapsed_whitelist.txt, Kai_MDDC_PFA1_1-0/log/Kai_MDDC_PFA1_1-0.whitelist.log
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA1_1-0
+    resources: mem_mb=4244, disk_mb=4244, tmpdir=/local/scratch/30803079.1.broad
+
+umi_tools whitelist --stdin Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_R1_001.filtered.fastq.gz --read2-in=Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_R2_001.filtered.fastq.gz             --bc-pattern=NNNNNNNNNN --bc-pattern2=CCCCCCCCCCCC             --plot-prefix=Kai_MDDC_PFA1_1-0/Kai_MDDC_PFA1_1-0 --method=umis             -L Kai_MDDC_PFA1_1-0/log/Kai_MDDC_PFA1_1-0.whitelist.log --knee-method=distance --error-correct-threshold 0 > Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_uncollapsed_whitelist.txt
+/home/unix/dawnxi/.conda/envs/hyprseq/lib/python3.9/site-packages/umi_tools/whitelist_methods.py:381: UserWarning: Attempted to set non-positive left xlim on a log-scaled axis.
+Invalid limit will be ignored.
+  fig3.set_xlim(0, len(counts)*1.25)
+[Fri Apr  8 19:55:34 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

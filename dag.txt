@@ -1,0 +1,837 @@
+digraph snakemake_dag {
+    graph[bgcolor=white, margin=0];
+    node[shape=box, style=rounded, fontname=sans,                 fontsize=10, penwidth=2];
+    edge[penwidth=2, color=grey];
+	0[label = "all", color = "0.51 0.6 0.85", style="rounded"];
+	1[label = "collate", color = "0.64 0.6 0.85", style="rounded"];
+	2[label = "emul_summary", color = "0.29 0.6 0.85", style="rounded"];
+	3[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	4[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	5[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	6[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	7[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	8[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	9[label = "emul_extraction\ncollapsed: collapsed", color = "0.20 0.6 0.85", style="rounded"];
+	10[label = "filter_fastqs", color = "0.07 0.6 0.85", style="rounded,dashed"];
+	11[label = "downsample\nread: 1\nsample: Kai_MDDC_PFA1_1-0", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	12[label = "downsample\nread: 2\nsample: Kai_MDDC_PFA1_1-0", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	13[label = "collapse_barcodes", color = "0.56 0.6 0.85", style="rounded"];
+	14[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded,dashed"];
+	15[label = "group", color = "0.60 0.6 0.85", style="rounded,dashed"];
+	16[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded,dashed"];
+	17[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded,dashed"];
+	18[label = "map_reads", color = "0.04 0.6 0.85", style="rounded,dashed"];
+	19[label = "trim_read", color = "0.47 0.6 0.85", style="rounded,dashed"];
+	20[label = "emul_extraction\ncollapsed: uncollapsed", color = "0.20 0.6 0.85", style="rounded,dashed"];
+	21[label = "whitelist_cbcs", color = "0.49 0.6 0.85", style="rounded,dashed"];
+	22[label = "create_bowtie_index\nindex: KL_ProbeList", color = "0.53 0.6 0.85", style="rounded,dashed"];
+	23[label = "index_bam", color = "0.24 0.6 0.85", style="rounded,dashed"];
+	24[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	25[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	26[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	27[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	28[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	29[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	30[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	31[label = "emul_extraction\ncollapsed: collapsed", color = "0.20 0.6 0.85", style="rounded"];
+	32[label = "filter_fastqs", color = "0.07 0.6 0.85", style="rounded,dashed"];
+	33[label = "downsample\nread: 1\nsample: Kai_MDDC_PFA1_2-1", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	34[label = "downsample\nread: 2\nsample: Kai_MDDC_PFA1_2-1", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	35[label = "collapse_barcodes", color = "0.56 0.6 0.85", style="rounded"];
+	36[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded,dashed"];
+	37[label = "group", color = "0.60 0.6 0.85", style="rounded,dashed"];
+	38[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded,dashed"];
+	39[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded,dashed"];
+	40[label = "map_reads", color = "0.04 0.6 0.85", style="rounded,dashed"];
+	41[label = "trim_read", color = "0.47 0.6 0.85", style="rounded,dashed"];
+	42[label = "emul_extraction\ncollapsed: uncollapsed", color = "0.20 0.6 0.85", style="rounded,dashed"];
+	43[label = "whitelist_cbcs", color = "0.49 0.6 0.85", style="rounded,dashed"];
+	44[label = "index_bam", color = "0.24 0.6 0.85", style="rounded,dashed"];
+	45[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	46[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	47[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	48[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	49[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	50[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	51[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	52[label = "emul_extraction\ncollapsed: collapsed", color = "0.20 0.6 0.85", style="rounded"];
+	53[label = "filter_fastqs", color = "0.07 0.6 0.85", style="rounded,dashed"];
+	54[label = "downsample\nread: 1\nsample: Kai_MDDC_PBS_Methanol1-2", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	55[label = "downsample\nread: 2\nsample: Kai_MDDC_PBS_Methanol1-2", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	56[label = "collapse_barcodes", color = "0.56 0.6 0.85", style="rounded"];
+	57[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded,dashed"];
+	58[label = "group", color = "0.60 0.6 0.85", style="rounded,dashed"];
+	59[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded,dashed"];
+	60[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded,dashed"];
+	61[label = "map_reads", color = "0.04 0.6 0.85", style="rounded,dashed"];
+	62[label = "trim_read", color = "0.47 0.6 0.85", style="rounded,dashed"];
+	63[label = "emul_extraction\ncollapsed: uncollapsed", color = "0.20 0.6 0.85", style="rounded,dashed"];
+	64[label = "whitelist_cbcs", color = "0.49 0.6 0.85", style="rounded,dashed"];
+	65[label = "index_bam", color = "0.24 0.6 0.85", style="rounded,dashed"];
+	66[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	67[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	68[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	69[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	70[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	71[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	72[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	73[label = "emul_extraction\ncollapsed: collapsed", color = "0.20 0.6 0.85", style="rounded"];
+	74[label = "filter_fastqs", color = "0.07 0.6 0.85", style="rounded,dashed"];
+	75[label = "downsample\nread: 1\nsample: Kai_MDDC_PBS_Methanol2-3", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	76[label = "downsample\nread: 2\nsample: Kai_MDDC_PBS_Methanol2-3", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	77[label = "collapse_barcodes", color = "0.56 0.6 0.85", style="rounded"];
+	78[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded,dashed"];
+	79[label = "group", color = "0.60 0.6 0.85", style="rounded,dashed"];
+	80[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded,dashed"];
+	81[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded,dashed"];
+	82[label = "map_reads", color = "0.04 0.6 0.85", style="rounded,dashed"];
+	83[label = "trim_read", color = "0.47 0.6 0.85", style="rounded,dashed"];
+	84[label = "emul_extraction\ncollapsed: uncollapsed", color = "0.20 0.6 0.85", style="rounded,dashed"];
+	85[label = "whitelist_cbcs", color = "0.49 0.6 0.85", style="rounded,dashed"];
+	86[label = "index_bam", color = "0.24 0.6 0.85", style="rounded,dashed"];
+	87[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	88[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	89[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	90[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	91[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	92[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	93[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	94[label = "emul_extraction\ncollapsed: collapsed", color = "0.20 0.6 0.85", style="rounded"];
+	95[label = "filter_fastqs", color = "0.07 0.6 0.85", style="rounded,dashed"];
+	96[label = "downsample\nread: 1\nsample: Kai_MDDC_PFA2-4", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	97[label = "downsample\nread: 2\nsample: Kai_MDDC_PFA2-4", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	98[label = "collapse_barcodes", color = "0.56 0.6 0.85", style="rounded"];
+	99[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded,dashed"];
+	100[label = "group", color = "0.60 0.6 0.85", style="rounded,dashed"];
+	101[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded,dashed"];
+	102[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded,dashed"];
+	103[label = "map_reads", color = "0.04 0.6 0.85", style="rounded,dashed"];
+	104[label = "trim_read", color = "0.47 0.6 0.85", style="rounded,dashed"];
+	105[label = "emul_extraction\ncollapsed: uncollapsed", color = "0.20 0.6 0.85", style="rounded,dashed"];
+	106[label = "whitelist_cbcs", color = "0.49 0.6 0.85", style="rounded,dashed"];
+	107[label = "index_bam", color = "0.24 0.6 0.85", style="rounded,dashed"];
+	108[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	109[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	110[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	111[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	112[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	113[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	114[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	115[label = "emul_extraction\ncollapsed: collapsed", color = "0.20 0.6 0.85", style="rounded"];
+	116[label = "filter_fastqs", color = "0.07 0.6 0.85", style="rounded,dashed"];
+	117[label = "downsample\nread: 1\nsample: Kai_MDDC_SSC_Methanol_ON-5", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	118[label = "downsample\nread: 2\nsample: Kai_MDDC_SSC_Methanol_ON-5", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	119[label = "collapse_barcodes", color = "0.56 0.6 0.85", style="rounded"];
+	120[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded,dashed"];
+	121[label = "group", color = "0.60 0.6 0.85", style="rounded,dashed"];
+	122[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded,dashed"];
+	123[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded,dashed"];
+	124[label = "map_reads", color = "0.04 0.6 0.85", style="rounded,dashed"];
+	125[label = "trim_read", color = "0.47 0.6 0.85", style="rounded,dashed"];
+	126[label = "emul_extraction\ncollapsed: uncollapsed", color = "0.20 0.6 0.85", style="rounded,dashed"];
+	127[label = "whitelist_cbcs", color = "0.49 0.6 0.85", style="rounded,dashed"];
+	128[label = "index_bam", color = "0.24 0.6 0.85", style="rounded,dashed"];
+	129[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	130[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	131[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	132[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	133[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	134[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	135[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	136[label = "emul_extraction\ncollapsed: collapsed", color = "0.20 0.6 0.85", style="rounded"];
+	137[label = "filter_fastqs", color = "0.07 0.6 0.85", style="rounded,dashed"];
+	138[label = "downsample\nread: 1\nsample: Kai_MDDC_SSC_Methanol_1h-6", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	139[label = "downsample\nread: 2\nsample: Kai_MDDC_SSC_Methanol_1h-6", color = "0.11 0.6 0.85", style="rounded,dashed"];
+	140[label = "collapse_barcodes", color = "0.56 0.6 0.85", style="rounded"];
+	141[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded,dashed"];
+	142[label = "group", color = "0.60 0.6 0.85", style="rounded,dashed"];
+	143[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded,dashed"];
+	144[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded,dashed"];
+	145[label = "map_reads", color = "0.04 0.6 0.85", style="rounded,dashed"];
+	146[label = "trim_read", color = "0.47 0.6 0.85", style="rounded,dashed"];
+	147[label = "emul_extraction\ncollapsed: uncollapsed", color = "0.20 0.6 0.85", style="rounded,dashed"];
+	148[label = "whitelist_cbcs", color = "0.49 0.6 0.85", style="rounded,dashed"];
+	149[label = "index_bam", color = "0.24 0.6 0.85", style="rounded,dashed"];
+	150[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	151[label = "combine_emul_stats", color = "0.02 0.6 0.85", style="rounded"];
+	152[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded,dashed"];
+	153[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	154[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	155[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	156[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	157[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	158[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	159[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	160[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	161[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	162[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	163[label = "emul_extraction\ncollapsed: collapsed_filtered", color = "0.20 0.6 0.85", style="rounded"];
+	164[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	165[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded,dashed"];
+	166[label = "emul_count", color = "0.13 0.6 0.85", style="rounded,dashed"];
+	167[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	168[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	169[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	170[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded,dashed"];
+	171[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	172[label = "get_filtered_reads", color = "0.09 0.6 0.85", style="rounded,dashed"];
+	173[label = "get_downsampled_reads", color = "0.27 0.6 0.85", style="rounded,dashed"];
+	174[label = "get_starting_cells", color = "0.44 0.6 0.85", style="rounded,dashed"];
+	175[label = "combine_emul_stats", color = "0.02 0.6 0.85", style="rounded"];
+	176[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded,dashed"];
+	177[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	178[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	179[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	180[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	181[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	182[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	183[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	184[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	185[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	186[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	187[label = "emul_extraction\ncollapsed: collapsed_filtered", color = "0.20 0.6 0.85", style="rounded"];
+	188[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	189[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded,dashed"];
+	190[label = "emul_count", color = "0.13 0.6 0.85", style="rounded,dashed"];
+	191[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	192[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	193[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	194[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded,dashed"];
+	195[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	196[label = "get_filtered_reads", color = "0.09 0.6 0.85", style="rounded,dashed"];
+	197[label = "get_downsampled_reads", color = "0.27 0.6 0.85", style="rounded,dashed"];
+	198[label = "get_starting_cells", color = "0.44 0.6 0.85", style="rounded,dashed"];
+	199[label = "combine_emul_stats", color = "0.02 0.6 0.85", style="rounded"];
+	200[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded,dashed"];
+	201[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	202[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	203[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	204[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	205[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	206[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	207[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	208[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	209[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	210[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	211[label = "emul_extraction\ncollapsed: collapsed_filtered", color = "0.20 0.6 0.85", style="rounded"];
+	212[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	213[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded,dashed"];
+	214[label = "emul_count", color = "0.13 0.6 0.85", style="rounded,dashed"];
+	215[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	216[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	217[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	218[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded,dashed"];
+	219[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	220[label = "get_filtered_reads", color = "0.09 0.6 0.85", style="rounded,dashed"];
+	221[label = "get_downsampled_reads", color = "0.27 0.6 0.85", style="rounded,dashed"];
+	222[label = "get_starting_cells", color = "0.44 0.6 0.85", style="rounded,dashed"];
+	223[label = "combine_emul_stats", color = "0.02 0.6 0.85", style="rounded"];
+	224[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded,dashed"];
+	225[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	226[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	227[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	228[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	229[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	230[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	231[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	232[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	233[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	234[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	235[label = "emul_extraction\ncollapsed: collapsed_filtered", color = "0.20 0.6 0.85", style="rounded"];
+	236[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	237[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded,dashed"];
+	238[label = "emul_count", color = "0.13 0.6 0.85", style="rounded,dashed"];
+	239[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	240[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	241[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	242[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded,dashed"];
+	243[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	244[label = "get_filtered_reads", color = "0.09 0.6 0.85", style="rounded,dashed"];
+	245[label = "get_downsampled_reads", color = "0.27 0.6 0.85", style="rounded,dashed"];
+	246[label = "get_starting_cells", color = "0.44 0.6 0.85", style="rounded,dashed"];
+	247[label = "combine_emul_stats", color = "0.02 0.6 0.85", style="rounded"];
+	248[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded,dashed"];
+	249[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	250[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	251[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	252[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	253[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	254[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	255[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	256[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	257[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	258[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	259[label = "emul_extraction\ncollapsed: collapsed_filtered", color = "0.20 0.6 0.85", style="rounded"];
+	260[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	261[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded,dashed"];
+	262[label = "emul_count", color = "0.13 0.6 0.85", style="rounded,dashed"];
+	263[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	264[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	265[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	266[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded,dashed"];
+	267[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	268[label = "get_filtered_reads", color = "0.09 0.6 0.85", style="rounded,dashed"];
+	269[label = "get_downsampled_reads", color = "0.27 0.6 0.85", style="rounded,dashed"];
+	270[label = "get_starting_cells", color = "0.44 0.6 0.85", style="rounded,dashed"];
+	271[label = "combine_emul_stats", color = "0.02 0.6 0.85", style="rounded"];
+	272[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded,dashed"];
+	273[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	274[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	275[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	276[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	277[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	278[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	279[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	280[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	281[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	282[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	283[label = "emul_extraction\ncollapsed: collapsed_filtered", color = "0.20 0.6 0.85", style="rounded"];
+	284[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	285[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded,dashed"];
+	286[label = "emul_count", color = "0.13 0.6 0.85", style="rounded,dashed"];
+	287[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	288[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	289[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	290[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded,dashed"];
+	291[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	292[label = "get_filtered_reads", color = "0.09 0.6 0.85", style="rounded,dashed"];
+	293[label = "get_downsampled_reads", color = "0.27 0.6 0.85", style="rounded,dashed"];
+	294[label = "get_starting_cells", color = "0.44 0.6 0.85", style="rounded,dashed"];
+	295[label = "combine_emul_stats", color = "0.02 0.6 0.85", style="rounded"];
+	296[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded,dashed"];
+	297[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	298[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	299[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	300[label = "analyze_emul_duplication", color = "0.22 0.6 0.85", style="rounded"];
+	301[label = "gzip_group", color = "0.62 0.6 0.85", style="rounded"];
+	302[label = "group", color = "0.60 0.6 0.85", style="rounded"];
+	303[label = "sort_bam", color = "0.38 0.6 0.85", style="rounded"];
+	304[label = "sam_to_bam", color = "0.40 0.6 0.85", style="rounded"];
+	305[label = "map_reads", color = "0.04 0.6 0.85", style="rounded"];
+	306[label = "trim_read", color = "0.47 0.6 0.85", style="rounded"];
+	307[label = "emul_extraction\ncollapsed: collapsed_filtered", color = "0.20 0.6 0.85", style="rounded"];
+	308[label = "index_bam", color = "0.24 0.6 0.85", style="rounded"];
+	309[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded,dashed"];
+	310[label = "emul_count", color = "0.13 0.6 0.85", style="rounded,dashed"];
+	311[label = "analyze_count", color = "0.16 0.6 0.85", style="rounded"];
+	312[label = "emul_count", color = "0.13 0.6 0.85", style="rounded"];
+	313[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	314[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded,dashed"];
+	315[label = "get_emul_extracted_reads", color = "0.58 0.6 0.85", style="rounded"];
+	316[label = "get_filtered_reads", color = "0.09 0.6 0.85", style="rounded,dashed"];
+	317[label = "get_downsampled_reads", color = "0.27 0.6 0.85", style="rounded,dashed"];
+	318[label = "get_starting_cells", color = "0.44 0.6 0.85", style="rounded,dashed"];
+	1 -> 0
+	2 -> 1
+	3 -> 2
+	25 -> 2
+	46 -> 2
+	67 -> 2
+	88 -> 2
+	109 -> 2
+	130 -> 2
+	151 -> 2
+	175 -> 2
+	199 -> 2
+	223 -> 2
+	247 -> 2
+	271 -> 2
+	295 -> 2
+	4 -> 3
+	5 -> 4
+	24 -> 4
+	6 -> 5
+	7 -> 6
+	8 -> 7
+	22 -> 7
+	9 -> 8
+	10 -> 9
+	13 -> 9
+	11 -> 10
+	12 -> 10
+	14 -> 13
+	15 -> 14
+	16 -> 15
+	23 -> 15
+	17 -> 16
+	18 -> 17
+	19 -> 18
+	22 -> 18
+	20 -> 19
+	10 -> 20
+	21 -> 20
+	10 -> 21
+	16 -> 23
+	5 -> 24
+	26 -> 25
+	27 -> 26
+	45 -> 26
+	28 -> 27
+	29 -> 28
+	30 -> 29
+	22 -> 29
+	31 -> 30
+	32 -> 31
+	35 -> 31
+	33 -> 32
+	34 -> 32
+	36 -> 35
+	37 -> 36
+	38 -> 37
+	44 -> 37
+	39 -> 38
+	40 -> 39
+	41 -> 40
+	22 -> 40
+	42 -> 41
+	32 -> 42
+	43 -> 42
+	32 -> 43
+	38 -> 44
+	27 -> 45
+	47 -> 46
+	48 -> 47
+	66 -> 47
+	49 -> 48
+	50 -> 49
+	51 -> 50
+	22 -> 50
+	52 -> 51
+	53 -> 52
+	56 -> 52
+	54 -> 53
+	55 -> 53
+	57 -> 56
+	58 -> 57
+	59 -> 58
+	65 -> 58
+	60 -> 59
+	61 -> 60
+	62 -> 61
+	22 -> 61
+	63 -> 62
+	53 -> 63
+	64 -> 63
+	53 -> 64
+	59 -> 65
+	48 -> 66
+	68 -> 67
+	69 -> 68
+	87 -> 68
+	70 -> 69
+	71 -> 70
+	72 -> 71
+	22 -> 71
+	73 -> 72
+	74 -> 73
+	77 -> 73
+	75 -> 74
+	76 -> 74
+	78 -> 77
+	79 -> 78
+	80 -> 79
+	86 -> 79
+	81 -> 80
+	82 -> 81
+	83 -> 82
+	22 -> 82
+	84 -> 83
+	74 -> 84
+	85 -> 84
+	74 -> 85
+	80 -> 86
+	69 -> 87
+	89 -> 88
+	90 -> 89
+	108 -> 89
+	91 -> 90
+	92 -> 91
+	93 -> 92
+	22 -> 92
+	94 -> 93
+	95 -> 94
+	98 -> 94
+	96 -> 95
+	97 -> 95
+	99 -> 98
+	100 -> 99
+	101 -> 100
+	107 -> 100
+	102 -> 101
+	103 -> 102
+	104 -> 103
+	22 -> 103
+	105 -> 104
+	95 -> 105
+	106 -> 105
+	95 -> 106
+	101 -> 107
+	90 -> 108
+	110 -> 109
+	111 -> 110
+	129 -> 110
+	112 -> 111
+	113 -> 112
+	114 -> 113
+	22 -> 113
+	115 -> 114
+	116 -> 115
+	119 -> 115
+	117 -> 116
+	118 -> 116
+	120 -> 119
+	121 -> 120
+	122 -> 121
+	128 -> 121
+	123 -> 122
+	124 -> 123
+	125 -> 124
+	22 -> 124
+	126 -> 125
+	116 -> 126
+	127 -> 126
+	116 -> 127
+	122 -> 128
+	111 -> 129
+	131 -> 130
+	132 -> 131
+	150 -> 131
+	133 -> 132
+	134 -> 133
+	135 -> 134
+	22 -> 134
+	136 -> 135
+	137 -> 136
+	140 -> 136
+	138 -> 137
+	139 -> 137
+	141 -> 140
+	142 -> 141
+	143 -> 142
+	149 -> 142
+	144 -> 143
+	145 -> 144
+	146 -> 145
+	22 -> 145
+	147 -> 146
+	137 -> 147
+	148 -> 147
+	137 -> 148
+	143 -> 149
+	132 -> 150
+	152 -> 151
+	153 -> 151
+	156 -> 151
+	165 -> 151
+	3 -> 151
+	167 -> 151
+	13 -> 151
+	169 -> 151
+	170 -> 151
+	171 -> 151
+	172 -> 151
+	173 -> 151
+	174 -> 151
+	14 -> 152
+	18 -> 152
+	154 -> 153
+	7 -> 153
+	155 -> 154
+	5 -> 155
+	24 -> 155
+	157 -> 156
+	161 -> 156
+	158 -> 157
+	159 -> 158
+	164 -> 158
+	160 -> 159
+	161 -> 160
+	162 -> 161
+	22 -> 161
+	163 -> 162
+	10 -> 163
+	13 -> 163
+	159 -> 164
+	166 -> 165
+	16 -> 166
+	23 -> 166
+	168 -> 167
+	159 -> 168
+	164 -> 168
+	9 -> 169
+	20 -> 170
+	163 -> 171
+	10 -> 172
+	11 -> 173
+	21 -> 174
+	176 -> 175
+	177 -> 175
+	180 -> 175
+	189 -> 175
+	25 -> 175
+	191 -> 175
+	35 -> 175
+	193 -> 175
+	194 -> 175
+	195 -> 175
+	196 -> 175
+	197 -> 175
+	198 -> 175
+	36 -> 176
+	40 -> 176
+	178 -> 177
+	29 -> 177
+	179 -> 178
+	27 -> 179
+	45 -> 179
+	181 -> 180
+	185 -> 180
+	182 -> 181
+	183 -> 182
+	188 -> 182
+	184 -> 183
+	185 -> 184
+	186 -> 185
+	22 -> 185
+	187 -> 186
+	32 -> 187
+	35 -> 187
+	183 -> 188
+	190 -> 189
+	38 -> 190
+	44 -> 190
+	192 -> 191
+	183 -> 192
+	188 -> 192
+	31 -> 193
+	42 -> 194
+	187 -> 195
+	32 -> 196
+	33 -> 197
+	43 -> 198
+	200 -> 199
+	201 -> 199
+	204 -> 199
+	213 -> 199
+	46 -> 199
+	215 -> 199
+	56 -> 199
+	217 -> 199
+	218 -> 199
+	219 -> 199
+	220 -> 199
+	221 -> 199
+	222 -> 199
+	57 -> 200
+	61 -> 200
+	202 -> 201
+	50 -> 201
+	203 -> 202
+	48 -> 203
+	66 -> 203
+	205 -> 204
+	209 -> 204
+	206 -> 205
+	207 -> 206
+	212 -> 206
+	208 -> 207
+	209 -> 208
+	210 -> 209
+	22 -> 209
+	211 -> 210
+	53 -> 211
+	56 -> 211
+	207 -> 212
+	214 -> 213
+	59 -> 214
+	65 -> 214
+	216 -> 215
+	207 -> 216
+	212 -> 216
+	52 -> 217
+	63 -> 218
+	211 -> 219
+	53 -> 220
+	54 -> 221
+	64 -> 222
+	224 -> 223
+	225 -> 223
+	228 -> 223
+	237 -> 223
+	67 -> 223
+	239 -> 223
+	77 -> 223
+	241 -> 223
+	242 -> 223
+	243 -> 223
+	244 -> 223
+	245 -> 223
+	246 -> 223
+	78 -> 224
+	82 -> 224
+	226 -> 225
+	71 -> 225
+	227 -> 226
+	69 -> 227
+	87 -> 227
+	229 -> 228
+	233 -> 228
+	230 -> 229
+	231 -> 230
+	236 -> 230
+	232 -> 231
+	233 -> 232
+	234 -> 233
+	22 -> 233
+	235 -> 234
+	74 -> 235
+	77 -> 235
+	231 -> 236
+	238 -> 237
+	80 -> 238
+	86 -> 238
+	240 -> 239
+	231 -> 240
+	236 -> 240
+	73 -> 241
+	84 -> 242
+	235 -> 243
+	74 -> 244
+	75 -> 245
+	85 -> 246
+	248 -> 247
+	249 -> 247
+	252 -> 247
+	261 -> 247
+	88 -> 247
+	263 -> 247
+	98 -> 247
+	265 -> 247
+	266 -> 247
+	267 -> 247
+	268 -> 247
+	269 -> 247
+	270 -> 247
+	99 -> 248
+	103 -> 248
+	250 -> 249
+	92 -> 249
+	251 -> 250
+	90 -> 251
+	108 -> 251
+	253 -> 252
+	257 -> 252
+	254 -> 253
+	255 -> 254
+	260 -> 254
+	256 -> 255
+	257 -> 256
+	258 -> 257
+	22 -> 257
+	259 -> 258
+	95 -> 259
+	98 -> 259
+	255 -> 260
+	262 -> 261
+	101 -> 262
+	107 -> 262
+	264 -> 263
+	255 -> 264
+	260 -> 264
+	94 -> 265
+	105 -> 266
+	259 -> 267
+	95 -> 268
+	96 -> 269
+	106 -> 270
+	272 -> 271
+	273 -> 271
+	276 -> 271
+	285 -> 271
+	109 -> 271
+	287 -> 271
+	119 -> 271
+	289 -> 271
+	290 -> 271
+	291 -> 271
+	292 -> 271
+	293 -> 271
+	294 -> 271
+	120 -> 272
+	124 -> 272
+	274 -> 273
+	113 -> 273
+	275 -> 274
+	111 -> 275
+	129 -> 275
+	277 -> 276
+	281 -> 276
+	278 -> 277
+	279 -> 278
+	284 -> 278
+	280 -> 279
+	281 -> 280
+	282 -> 281
+	22 -> 281
+	283 -> 282
+	116 -> 283
+	119 -> 283
+	279 -> 284
+	286 -> 285
+	122 -> 286
+	128 -> 286
+	288 -> 287
+	279 -> 288
+	284 -> 288
+	115 -> 289
+	126 -> 290
+	283 -> 291
+	116 -> 292
+	117 -> 293
+	127 -> 294
+	296 -> 295
+	297 -> 295
+	300 -> 295
+	309 -> 295
+	130 -> 295
+	311 -> 295
+	140 -> 295
+	313 -> 295
+	314 -> 295
+	315 -> 295
+	316 -> 295
+	317 -> 295
+	318 -> 295
+	141 -> 296
+	145 -> 296
+	298 -> 297
+	134 -> 297
+	299 -> 298
+	132 -> 299
+	150 -> 299
+	301 -> 300
+	305 -> 300
+	302 -> 301
+	303 -> 302
+	308 -> 302
+	304 -> 303
+	305 -> 304
+	306 -> 305
+	22 -> 305
+	307 -> 306
+	137 -> 307
+	140 -> 307
+	303 -> 308
+	310 -> 309
+	143 -> 310
+	149 -> 310
+	312 -> 311
+	303 -> 312
+	308 -> 312
+	136 -> 313
+	147 -> 314
+	307 -> 315
+	137 -> 316
+	138 -> 317
+	148 -> 318
+}            

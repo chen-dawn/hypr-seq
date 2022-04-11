@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 20:52:29 2022]
+rule emul_count:
+    input: Kai_MDDC_SSC_Methanol_1h-6/tmp/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed.extracted.trim.sorted.bam, Kai_MDDC_SSC_Methanol_1h-6/tmp/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed.extracted.trim.sorted.bam.bai
+    output: Kai_MDDC_SSC_Methanol_1h-6/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed_emul_flat.counts.txt, Kai_MDDC_SSC_Methanol_1h-6/log/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed.count.log
+    jobid: 0
+    wildcards: sample=Kai_MDDC_SSC_Methanol_1h-6, collapsed=uncollapsed
+    resources: mem_mb=1271, disk_mb=1271, tmpdir=/local/scratch/30803357.1.broad
+
+umi_tools count --per-gene --per-contig --per-cell --method=directional                    -I Kai_MDDC_SSC_Methanol_1h-6/tmp/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed.extracted.trim.sorted.bam -S Kai_MDDC_SSC_Methanol_1h-6/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed_emul_flat.counts.txt -L Kai_MDDC_SSC_Methanol_1h-6/log/Kai_MDDC_SSC_Methanol_1h-6_uncollapsed.count.log
+[Fri Apr  8 21:01:27 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

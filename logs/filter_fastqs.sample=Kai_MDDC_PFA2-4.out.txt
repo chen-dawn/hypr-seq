@@ -1,0 +1,69 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 19:30:46 2022]
+rule filter_fastqs:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R1_001.downsampled.fastq.gz, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R2_001.downsampled.fastq.gz
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R1_001.filtered.fastq.gz, Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R2_001.filtered.fastq.gz, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4_fastp.html, Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4_fastp.json
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4
+    resources: mem_mb=3902, disk_mb=3902, tmpdir=/local/scratch/30803066.1.broad
+
+fastp -i Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R1_001.downsampled.fastq.gz -I Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R2_001.downsampled.fastq.gz -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R1_001.filtered.fastq.gz -O Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R2_001.filtered.fastq.gz             --length_required 12 -h Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4_fastp.html -j Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4_fastp.json
+Read1 before filtering:
+total reads: 48133625
+total bases: 2011411979
+Q20 bases: 1803060696(89.6415%)
+Q30 bases: 1753963841(87.2006%)
+
+Read2 before filtering:
+total reads: 48133625
+total bases: 673870750
+Q20 bases: 648523733(96.2386%)
+Q30 bases: 641014977(95.1243%)
+
+Read1 after filtering:
+total reads: 47094982
+total bases: 1967997062
+Q20 bases: 1766108016(89.7414%)
+Q30 bases: 1718368064(87.3156%)
+
+Read2 after filtering:
+total reads: 47094982
+total bases: 659329748
+Q20 bases: 638924649(96.9052%)
+Q30 bases: 632147063(95.8772%)
+
+Filtering result:
+reads passed filter: 94189964
+reads failed due to low quality: 1190164
+reads failed due to too many N: 658
+reads failed due to too short: 886464
+reads with adapter trimmed: 0
+bases trimmed due to adapters: 0
+
+Duplication rate: 1.6841%
+
+Insert size peak (evaluated by paired-end reads): 0
+
+JSON report: Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4_fastp.json
+HTML report: Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4_fastp.html
+
+fastp -i Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R1_001.downsampled.fastq.gz -I Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R2_001.downsampled.fastq.gz -o Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R1_001.filtered.fastq.gz -O Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_R2_001.filtered.fastq.gz --length_required 12 -h Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4_fastp.html -j Kai_MDDC_PFA2-4/log/Kai_MDDC_PFA2-4_fastp.json 
+fastp v0.23.2, time used: 126 seconds
+[Fri Apr  8 19:32:52 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

@@ -1,5 +1,4 @@
 ## Python 3
-name: hyprseq
 channels:
   - defaults
   - bioconda

@@ -1,0 +1,28 @@
+ID	Name	Read1	Read2	ProbeName	ProbePath	CellNum
+1	1	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PFA1_1_S1_R1_001.fastq.gz	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PFA1_1_S1_R2_001.fastq.gz	KL_ProbeList	/broad/thechenlab/Dawn/HyprSeq/hypr-seq/example/KL_ProbeList.txt	Guess
+2	2	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PFA1_2_S2_R1_001.fastq.gz	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PFA1_2_S2_R2_001.fastq.gz	KL_ProbeList	/broad/thechenlab/Dawn/HyprSeq/hypr-seq/example/KL_ProbeList.txt	Guess
+3	3	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PBS_Methanol1_S3_R1_001.fastq.gz	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PBS_Methanol1_S3_R2_001.fastq.gz	KL_ProbeList	/broad/thechenlab/Dawn/HyprSeq/hypr-seq/example/KL_ProbeList.txt	Guess
+4	4	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PBS_Methanol2_S4_R1_001.fastq.gz	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PBS_Methanol2_S4_R2_001.fastq.gz	KL_ProbeList	/broad/thechenlab/Dawn/HyprSeq/hypr-seq/example/KL_ProbeList.txt	Guess
+5	5	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PFA2_S5_R1_001.fastq.gz	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_PFA2_S5_R2_001.fastq.gz	KL_ProbeList	/broad/thechenlab/Dawn/HyprSeq/hypr-seq/example/KL_ProbeList.txt	Guess
+6	6	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_SSC_Methanol_ON_S6_R1_001.fastq.gz	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_SSC_Methanol_ON_S6_R2_001.fastq.gz	KL_ProbeList	/broad/thechenlab/Dawn/HyprSeq/hypr-seq/example/KL_ProbeList.txt	Guess
+7	7	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_SSC_Methanol_1h_S7_R1_001.fastq.gz	/broad/thechenlab/Dawn/HyprSeq/20220222_KL_HyPRseq/bcl/Data/Intensities/BaseCalls/Kai_MDDC_SSC_Methanol_1h_S7_R2_001.fastq.gz	KL_ProbeList	/broad/thechenlab/Dawn/HyprSeq/hypr-seq/example/KL_ProbeList.txt	Guess
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						

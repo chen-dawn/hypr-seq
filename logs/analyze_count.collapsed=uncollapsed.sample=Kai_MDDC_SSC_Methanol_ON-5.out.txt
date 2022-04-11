@@ -1,0 +1,68 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 20:26:47 2022]
+rule analyze_count:
+    input: Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul_flat.counts.txt
+    output: Kai_MDDC_SSC_Methanol_ON-5/stats/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed.out_stats.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed.out_plots.pdf, Kai_MDDC_SSC_Methanol_ON-5/log/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed.analyze_count.log, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.count_matrix_probes.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.count_matrix_probes_rescaled.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.count_matrix.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.count_matrix_rescaled.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.sum_probes.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.sum_genes.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.average_probes.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.average_genes.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed.probe_correlation.png, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.probe_zscores.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.gene_zscores.txt, Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.problematic_probes.txt, outputs/probecountspercellKai_MDDC_SSC_Methanol_ON-5_uncollapsed.xlsx, outputs/countsperprobeKai_MDDC_SSC_Methanol_ON-5_uncollapsed.xlsx, outputs/countspergeneKai_MDDC_SSC_Methanol_ON-5_uncollapsed.xlsx, outputs/zscorespercellKai_MDDC_SSC_Methanol_ON-5_uncollapsed.xlsx
+    jobid: 0
+    wildcards: sample=Kai_MDDC_SSC_Methanol_ON-5, collapsed=uncollapsed
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30803230.1.broad
+
+python bin/analyze_count.py --flat Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul_flat.counts.txt             --cell_x_gene Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.count_matrix.txt --cell_x_gene_rescaled Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.count_matrix_rescaled.txt --cell_x_probe Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.count_matrix_probes.txt --cell_x_probe_rescaled Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.count_matrix_probes_rescaled.txt             --sum_probes Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.sum_probes.txt --sum_genes Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.sum_genes.txt --average_probes Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.average_probes.txt --average_genes Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.average_genes.txt             --plots Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed.out_plots.pdf --stats Kai_MDDC_SSC_Methanol_ON-5/stats/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed.out_stats.txt --log Kai_MDDC_SSC_Methanol_ON-5/log/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed.analyze_count.log --collapsed uncollapsed --bc_stats None             --gene_z Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.gene_zscores.txt --probe_z Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.probe_zscores.txt --corr Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed.probe_correlation.png --problematic_probes Kai_MDDC_SSC_Methanol_ON-5/Kai_MDDC_SSC_Methanol_ON-5_uncollapsed_emul.problematic_probes.txt             --excelcounts outputs/probecountspercellKai_MDDC_SSC_Methanol_ON-5_uncollapsed.xlsx --excelprobes outputs/countsperprobeKai_MDDC_SSC_Methanol_ON-5_uncollapsed.xlsx --excelgenes outputs/countspergeneKai_MDDC_SSC_Methanol_ON-5_uncollapsed.xlsx --excelzscores outputs/zscorespercellKai_MDDC_SSC_Methanol_ON-5_uncollapsed.xlsx
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1499: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  to_plot = to_plot.append(df)
+/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py:1520: FutureWarning: Boolean inputs to the `inclusive` argument are deprecated in favour of `both` or `neither`.
+  good_probes = to_plot['log2(fold change) relative to median'].between(-threshold, threshold, inclusive=True)
+[Fri Apr  8 20:39:54 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

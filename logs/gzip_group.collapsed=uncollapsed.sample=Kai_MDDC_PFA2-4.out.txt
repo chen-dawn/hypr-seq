@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 22:04:18 2022]
+rule gzip_group:
+    input: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv
+    output: Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA2-4, collapsed=uncollapsed
+    resources: mem_mb=3559, disk_mb=3559, tmpdir=/local/scratch/30803627.1.broad
+
+gzip < Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv > Kai_MDDC_PFA2-4/tmp/Kai_MDDC_PFA2-4_uncollapsed.groups.tsv.gz
+[Fri Apr  8 22:07:11 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

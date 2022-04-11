@@ -1,0 +1,24 @@
+COLLAPSE BARCODE IS RUNNING
+                                                   read_id  ... unique_id
+0        NB501583:976:HWN3KBGXK:3:12502:14831:10261_AAA...  ...         0
+1        NB501583:976:HWN3KBGXK:4:22504:23336:16888_AAA...  ...         1
+2        NB501583:976:HWN3KBGXK:3:21610:8859:11587_AAAA...  ...         2
+3        NB501583:976:HWN3KBGXK:3:23607:14618:8204_AAAA...  ...         3
+4        NB501583:976:HWN3KBGXK:2:21108:11541:2193_AAAA...  ...         4
+...                                                    ...  ...       ...
+7052966  NB501583:976:HWN3KBGXK:4:23409:20023:2395_TTTT...  ...   6770928
+7052967  NB501583:976:HWN3KBGXK:1:23203:11927:11476_TTT...  ...   6770929
+7052968  NB501583:976:HWN3KBGXK:4:22612:20333:6550_TTTT...  ...   6770930
+7052969  NB501583:976:HWN3KBGXK:3:23610:20485:1533_TTTT...  ...   6770931
+7052970  NB501583:976:HWN3KBGXK:3:23612:17949:12492_TTT...  ...   6770931
+
+[7052971 rows x 5 columns]
+Filtering done
+Traceback (most recent call last):
+  File "/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/collapse_barcodes.py", line 241, in <module>
+    collapse_beads_and_write_whitelist(args.groups_file, args.whitelist_file, args.filtered_whitelist_file, args.barcode_stats, args.overlap_mat, plots, log, stats, args.thresh, args.histogram_file, args.clustermap_png)
+  File "/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/collapse_barcodes.py", line 43, in collapse_beads_and_write_whitelist
+    adjacency_matrix, cbcs, n_beads, sets = mip_tools.build_adjacency_matrix(filtered)
+  File "/broad/thechenlab/Dawn/HyprSeq/hypr-seq/bin/mip_tools.py", line 407, in build_adjacency_matrix
+    adjacency_matrix[j][i] = overlap / denom_j
+KeyboardInterrupt

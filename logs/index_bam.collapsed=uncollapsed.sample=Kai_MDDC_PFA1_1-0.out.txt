@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 21:46:50 2022]
+rule index_bam:
+    input: Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_uncollapsed.extracted.trim.sorted.bam
+    output: Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_uncollapsed.extracted.trim.sorted.bam.bai
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PFA1_1-0, collapsed=uncollapsed
+    resources: mem_mb=1642, disk_mb=1642, tmpdir=/local/scratch/30803532.1.broad
+
+samtools index Kai_MDDC_PFA1_1-0/tmp/Kai_MDDC_PFA1_1-0_uncollapsed.extracted.trim.sorted.bam
+[Fri Apr  8 21:47:19 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]

@@ -1,7 +1,7 @@
 {
     "__default__" :
     {
-        "memory" : 8,
+        "memory" : 16,
         "output" : "\"logs/{rule}.{wildcards}.out.txt\""
     },
 
@@ -12,6 +12,6 @@
 
     "collapse_barcodes" :
     {
-        "memory" : 32
+        "memory" : 64
     }
 }

@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Apr  8 20:14:41 2022]
+rule analyze_emul_duplication:
+    input: Kai_MDDC_PBS_Methanol2-3/tmp/Kai_MDDC_PBS_Methanol2-3_uncollapsed.groups.tsv.gz, Kai_MDDC_PBS_Methanol2-3/log/Kai_MDDC_PBS_Methanol2-3_uncollapsed.bowtie.log
+    output: Kai_MDDC_PBS_Methanol2-3/log/Kai_MDDC_PBS_Methanol2-3_uncollapsed.analyze_duplication.log, Kai_MDDC_PBS_Methanol2-3/stats/Kai_MDDC_PBS_Methanol2-3_uncollapsed.duplication_stats.txt, Kai_MDDC_PBS_Methanol2-3/Kai_MDDC_PBS_Methanol2-3_uncollapsed.duplication_stats.pdf
+    jobid: 0
+    wildcards: sample=Kai_MDDC_PBS_Methanol2-3, collapsed=uncollapsed
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/local/scratch/30803173.1.broad
+
+python bin/analyze_duplication.py -g Kai_MDDC_PBS_Methanol2-3/tmp/Kai_MDDC_PBS_Methanol2-3_uncollapsed.groups.tsv.gz -l Kai_MDDC_PBS_Methanol2-3/log/Kai_MDDC_PBS_Methanol2-3_uncollapsed.analyze_duplication.log             -s Kai_MDDC_PBS_Methanol2-3/stats/Kai_MDDC_PBS_Methanol2-3_uncollapsed.duplication_stats.txt -b Kai_MDDC_PBS_Methanol2-3/log/Kai_MDDC_PBS_Methanol2-3_uncollapsed.bowtie.log -p Kai_MDDC_PBS_Methanol2-3/Kai_MDDC_PBS_Methanol2-3_uncollapsed.duplication_stats.pdf -u uncollapsed
+[Fri Apr  8 20:23:19 2022]
+Finished job 0.
+1 of 1 steps (100%) done
+   ID  ... CellNum
+0   0  ...   Guess
+1   1  ...   Guess
+2   2  ...   Guess
+3   3  ...   Guess
+4   4  ...   Guess
+5   5  ...   Guess
+6   6  ...   Guess
+
+[7 rows x 7 columns]
