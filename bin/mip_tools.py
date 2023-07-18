@@ -542,6 +542,8 @@ def plot_barcode_stats(bc_stats, plots):
 # x_bar is the sample mean sum over x of (fraction of drops with x beads * x)
 # lambda_hat is the thing we vary to estimate the normal poisson's lambda
 def zero_trunc_poisson_objective(lambda_hat, x_bar):
+    if lambda_hat == 0:
+        return 0
     return np.abs(x_bar - lambda_hat / (1 - np.exp(-1 * lambda_hat)))
 
 # uses observed counts of beads per droplet to estimate the poisson rate for beads

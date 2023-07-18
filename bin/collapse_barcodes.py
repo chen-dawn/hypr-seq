@@ -16,7 +16,7 @@ import mip_tools
 def collapse_beads_and_write_whitelist(groups_file, whitelist_file, filtered_whitelist_file, barcode_stats, overlap_mat, plots, log, stats, thresh, histogram_file, clustermap_png):
     # read in file
     groups = pd.read_table(groups_file, usecols=['read_id', 'umi', 'final_umi', 'contig', 'unique_id'])
-    print(groups)
+    
     
     # annotate groups df with additional columns
     groups['CBC'] = groups.apply(lambda row: mip_tools.extract_cbc(row['read_id']), axis=1)
@@ -28,7 +28,7 @@ def collapse_beads_and_write_whitelist(groups_file, whitelist_file, filtered_whi
     filtered = groups.loc[~groups.pathological]
     print("Filtering done")
 
-    # mip_tools.make_knee_plot_from_groups(filtered, plots)
+    mip_tools.make_knee_plot_from_groups(filtered, plots)
 
     # write how many BCs dropped for being pathological
     path_cbcs = len(groups.loc[groups.pathological, 'CBC'].unique())
@@ -53,7 +53,7 @@ def collapse_beads_and_write_whitelist(groups_file, whitelist_file, filtered_whi
     n_clusters, labels = mip_tools.do_connected_components(adjacency_matrix_filtered)
     print("Find connected components")
     # plot adjacency matrix (now taking into account the cluster assignments)
-    # mip_tools.plot_adjacency_matrix(adjacency_matrix, labels, plots, thresh, log, histogram_file, clustermap_png)
+    mip_tools.plot_adjacency_matrix(adjacency_matrix, labels, plots, thresh, log, histogram_file, clustermap_png)
 
     # write and plot results
     stats.write('Number of clusters\t{}\n'.format(n_clusters))

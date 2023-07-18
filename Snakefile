@@ -25,9 +25,7 @@ SequenceFormatter.format_field = new_format_field
 
 def parse_sample_sheet(path_to_sample_sheet):
     # add in column for downsampling, if necessary
-    sample_sheet = pd.read_table(path_to_sample_sheet, converters={i: str for i in range(0, 100)})
-    sample_sheet = sample_sheet.astype({"ID": int})
-    print(sample_sheet)
+    sample_sheet = pd.read_table(path_to_sample_sheet)
     if 'ReadsToUse' not in sample_sheet.columns:
         sample_sheet['ReadsToUse'] = False
     return sample_sheet
@@ -317,11 +315,7 @@ rule sam_to_bam:
 # finds the proper bowtie index for each sample
 def map_reads_helper(wildcards):
     sample = wildcards.sample
-    # print(sample_sheet.ID)
-    # print(sample_sheet.ID == sample_name_to_id(sample))
     index_name = sample_sheet.loc[sample_sheet.ID == sample_name_to_id(sample), 'ProbeName'].values[0]
-    # print(index_name)
-    # print(sample)
     return {'trim': '{sample}/tmp/{sample}_{collapsed}_R1_001.extracted.trim.fastq.gz'.format(sample=sample, collapsed=wildcards.collapsed),
             'index': 'bowtie/{index}.1.ebwt'.format(index=index_name)}
 
@@ -489,7 +483,7 @@ def downsample_helper(wildcards):
 
 def get_read_count_for_downsampling(wildcards):
     read_count = sample_sheet.loc[sample_sheet.ID == sample_name_to_id(wildcards.sample), 'ReadsToUse'].values[0]
-    return int(4 * read_count)
+    return int(4 * int(read_count))
 
 # downsample a fastq (for bulk or emulsion) by taking the first n reads (from sample sheet)
 # returns all the reads if ReadsToUse is False
@@ -508,6 +502,5 @@ rule downsample:
             # take everything
             shell("cp {input} {output}")
             
-
 
 
